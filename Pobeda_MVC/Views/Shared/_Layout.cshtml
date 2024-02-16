@@ -1,49 +1,1479 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Pobeda_MVC</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Pobeda_MVC.styles.css" asp-append-version="true" />
+    <title>Комиссионный магазин «Победа»</title>
+    <link rel="shortcut icon" href="~/img/icon-main.ico" type="image/x-icon" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/main-components.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/order.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/cart.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/product.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Pobeda_MVC</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+    <header class="header">
+      <div class="navbar-top">
+        <div class="j-container navbar-top-container">
+          <div class="navbar-city">
+            <div class="navbar-city-icon">
+              <i class="ui-icon ui-icon-place"></i>
             </div>
-        </nav>
+            <div class="navbar-city-content">
+              <a>Набережные Челны</a>
+            </div>
+          </div>
+          <div class="nav" style="overflow: hidden">
+            <a href="#" class="nav-item">Каталог</a>
+            <a href="#" class="nav-item active">Акции</a>
+            <a href="#" class="nav-item">Обратная связь</a>
+            <a href="#" class="nav-item">Вакансии</a>
+            <a href="#" class="nav-item">Услуги</a>
+          </div>
+          <div class="phone">
+            <i class="ui-icon ui-icon-phone"></i>
+            <a class="phone-label">8 800 500 55 13</a>
+          </div>
+        </div>
+      </div>
+      <div class="navbar-mobile-top">
+        <div class="nav">
+          <div class="nav-item" id="mobileCatalogTopButton">
+            <div class="nav-item-icon">
+              <i class="ui-icon ui-icon-catalog"></i>
+            </div>
+            <div class="nav-item-label">Каталог</div>
+          </div>
+          <div class="nav-item">
+            <div class="nav-item-icon">
+              <i class="ui-icon ui-icon-percent"></i>
+            </div>
+            <div class="nav-item-label">Акции</div>
+          </div>
+          <div class="nav-item">
+            <div class="nav-item-icon">
+              <i class="ui-icon ui-icon-category-telefony-mobile"></i>
+            </div>
+            <div class="nav-item-label">Телефоны</div>
+          </div>
+          <div class="nav-item">
+            <div class="nav-item-icon">
+              <i class="ui-icon ui-icon-category-instrument-mobile"></i>
+            </div>
+            <div class="nav-item-label">Инструменты</div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar-mobile">
+        <div class="nav">
+          <div class="nav-item is-active">
+            <div class="nav-item-icon">
+              <a href="../html/index.html"
+                ><i class="ui-icon ui-icon-home"></i
+              ></a>
+            </div>
+            <div class="nav-item-label">Главная</div>
+          </div>
+          <div class="nav-item" id="mobileCatalogDownButton">
+            <div class="nav-item-icon">
+              <i class="ui-icon ui-icon-catalog"></i>
+            </div>
+            <div class="nav-item-label">Каталог</div>
+          </div>
+          <div class="nav-item">
+            <div class="nav-item-icon">
+              <a href="../html/cart.html"
+                ><i class="ui-icon ui-icon-cart"></i
+              ></a>
+            </div>
+            <div class="nav-item-label">Корзина</div>
+          </div>
+          <div class="nav-item">
+            <div class="nav-item-icon">
+              <i class="ui-icon ui-icon-inventory"></i>
+            </div>
+            <div class="nav-item-label">Заказы</div>
+          </div>
+          <div class="nav-item">
+            <div class="nav-item-icon">
+              <i class="ui-icon ui-icon-person"></i>
+            </div>
+            <div class="nav-item-label">Войти</div>
+          </div>
+        </div>
+      </div>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+    <div class="navbar-catalog" id="navbarCatalog">
+      <div class="navbar-catalog-container">
+        <div class="j-container">
+          <div class="navbar-catalog-content">
+            <div class="navbar-catalog-menu">
+              <a class="menu-item is-active">
+                <i class="ui-icon ui-icon-category-telefony"></i>
+                <div class="menu-item-title">Телефоны</div>
+              </a>
+              <a class="menu-item">
+                <i class="ui-icon ui-icon-category-kompyuternaya-tehnika"></i>
+                <div class="menu-item-title">Компьютерная техника</div>
+              </a>
+              <a class="menu-item">
+                <i class="ui-icon ui-icon-category-instrument"></i>
+                <div class="menu-item-title">Инструмент</div>
+              </a>
+              <a class="menu-item">
+                <i class="ui-icon ui-icon-category-igry-i-pristavki"></i>
+                <div class="menu-item-title">Игры и приставки</div>
+              </a>
+              <a class="menu-item">
+                <i class="ui-icon ui-icon-category-tovary-dlya-doma"></i>
+                <div class="menu-item-title">Товары для дома</div>
+              </a>
+              <a class="menu-item">
+                <i class="ui-icon ui-icon-category-avto"></i>
+                <div class="menu-item-title">Авто</div>
+              </a>
+              <a class="menu-item">
+                <i class="ui-icon ui-icon-category-foto-i-videotehnika"></i>
+                <div class="menu-item-title">Фото и видеотехника</div>
+              </a>
+              <a class="menu-item">
+                <i class="ui-icon ui-icon-category-hobbi-i-otdyh"></i>
+                <div class="menu-item-title">Хобби и отдых</div>
+              </a>
+              <a class="menu-item">
+                <i class="ui-icon ui-icon-category-lichnye-vecshi"></i>
+                <div class="menu-item-title">Личные вещи</div>
+              </a>
+              <a class="menu-item">
+                <i class="ui-icon ui-icon-category-audiotehnika"></i>
+                <div class="menu-item-title">Аудиотехника</div>
+              </a>
+              <a class="menu-item">
+                <i class="ui-icon ui-icon-category-tv-i-video"></i>
+                <div class="menu-item-title">ТВ и Видео</div>
+              </a>
+              <a class="menu-item">
+                <i class="ui-icon ui-icon-category-tovary-dlya-detei"></i>
+                <div class="menu-item-title">Товары для детей</div>
+              </a>
+            </div>
+
+            <div class="navbar-catalog-categories is-active">
+              <div class="subcategories-overlay">
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <a class="categories-item-title">
+                      Телефоны
+                      <span class="navbar-catalog-count">1 542</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Сотовые телефоны
+                      <span class="navbar-catalog-count">1 045</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Умные часы и браслеты
+                      <span class="navbar-catalog-count">90</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Наушники для телефонов
+                      <span class="navbar-catalog-count">201</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Телефоны для дома и офиса
+                      <span class="navbar-catalog-count">1</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Рации
+                      <span class="navbar-catalog-count">2</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Зарядные устройства
+                      <span class="navbar-catalog-count">163</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Аксессуары для телефонов
+                      <span class="navbar-catalog-count">40</span>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <div class="categories-item-title" title="Часто ищут б/у">
+                      Часто ищут
+                    </div>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Iphone
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Apple watch
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Iphone 13
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Samsung S22
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Samsung S21
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      AirPods
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <div class="categories-item-title" title="Акции б/у">
+                      Акции
+                    </div>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title"> Iphone SALE </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title"> Наушники SALE </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title"> Телефоны SALE </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="navbar-catalog-categories">
+              <div class="subcategories-overlay">
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <a class="categories-item-title">
+                      Компьютерная техника
+                      <span class="navbar-catalog-count">280</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Ноутбуки
+                      <span class="navbar-catalog-count">55</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Системные блоки
+                      <span class="navbar-catalog-count">26</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Мониторы
+                      <span class="navbar-catalog-count">38</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Компьютерные мыши
+                      <span class="navbar-catalog-count">20</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Клавиатуры
+                      <span class="navbar-catalog-count">2</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Компьютерные гарнитуры и наушники
+                      <span class="navbar-catalog-count">32</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Web-камеры
+                      <span class="navbar-catalog-count">6</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Планшетные пк
+                      <span class="navbar-catalog-count">32</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Принтеры и МФУ
+                      <span class="navbar-catalog-count">3</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Роутеры и модемы
+                      <span class="navbar-catalog-count">18</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Жесткие диски
+                      <span class="navbar-catalog-count">12</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Прочая оргтехника
+                      <span class="navbar-catalog-count">4</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Аксессуары для компьютеров
+                      <span class="navbar-catalog-count">32</span>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <div class="categories-item-title" title="Часто ищут б/у">
+                      Часто ищут
+                    </div>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Наушники
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Ноутбук
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Монитор
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Macbook
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Acer
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Жесткий Диск
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <div class="categories-item-title" title="Акции б/у">
+                      Акции
+                    </div>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title"> Наушники SALE </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title"> Ноутбук SALE </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title"> Монитор SALE </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="navbar-catalog-categories">
+              <div class="subcategories-overlay">
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <a class="categories-item-title">
+                      Инструмент
+                      <span class="navbar-catalog-count">656</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Измерительные инструменты
+                      <span class="navbar-catalog-count">39</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Электроинструмент
+                      <span class="navbar-catalog-count">485</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Ручной инструмент
+                      <span class="navbar-catalog-count">64</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Сварочное оборудование
+                      <span class="navbar-catalog-count">34</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Бензоинструмент
+                      <span class="navbar-catalog-count">11</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Пневмоинструмент
+                      <span class="navbar-catalog-count">4</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Светотехника
+                      <span class="navbar-catalog-count">10</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Техника для сада
+                      <span class="navbar-catalog-count">9</span>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <div class="categories-item-title" title="Часто ищут б/у">
+                      Часто ищут
+                    </div>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Перфоратор
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Шуруповерт
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      УШМ
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Набор инструментов
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Сварочник
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <div class="categories-item-title" title="Акции б/у">
+                      Акции
+                    </div>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title"> Перфоратор SALE </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title"> Шуруповерт SALE </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title"> УШМ SALE </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="navbar-catalog-categories">
+              <div class="subcategories-overlay">
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <a class="categories-item-title">
+                      Игры и приставки
+                      <span class="navbar-catalog-count">53</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Игровые приставки
+                      <span class="navbar-catalog-count">20</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Игры для приставок
+                      <span class="navbar-catalog-count">15</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Аксессуары для игровых приставок
+                      <span class="navbar-catalog-count">15</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Настольные игры
+                      <span class="navbar-catalog-count">3</span>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <div class="categories-item-title" title="Часто ищут б/у">
+                      Часто ищут
+                    </div>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      PS1
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      PS2
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      PS3
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      PS4
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      PS5
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Джойстик
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="navbar-catalog-categories">
+              <div class="subcategories-overlay">
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <a class="categories-item-title">
+                      Товары для дома
+                      <span class="navbar-catalog-count">316</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Хозяйственные товары
+                      <span class="navbar-catalog-count">2</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Мультиварки
+                      <span class="navbar-catalog-count">15</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Климатическое оборудование
+                      <span class="navbar-catalog-count">24</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Мебель и интерьер
+                      <span class="navbar-catalog-count">6</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Микроволновые печи
+                      <span class="navbar-catalog-count">8</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Пылесосы
+                      <span class="navbar-catalog-count">35</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Стиральные машины
+                      <span class="navbar-catalog-count">1</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Товары для красоты и здоровья
+                      <span class="navbar-catalog-count">12</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Товары для кухни
+                      <span class="navbar-catalog-count">52</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Утюги и отпариватели
+                      <span class="navbar-catalog-count">21</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Чайники и кофеварки
+                      <span class="navbar-catalog-count">32</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Холодильники и морозильники
+                      <span class="navbar-catalog-count">1</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Швейные машины
+                      <span class="navbar-catalog-count">3</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Бритвы и машинки для стрижки
+                      <span class="navbar-catalog-count">29</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Фены и плойки
+                      <span class="navbar-catalog-count">24</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Весы
+                      <span class="navbar-catalog-count">30</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Электрические плиты
+                      <span class="navbar-catalog-count">7</span>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <div class="categories-item-title" title="Часто ищут б/у">
+                      Часто ищут
+                    </div>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Микроволновка
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Мультиварка
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Фен
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Пароварка
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Обогреватель
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Робот пылесос
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="navbar-catalog-categories">
+              <div class="subcategories-overlay">
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <a class="categories-item-title">
+                      Авто
+                      <span class="navbar-catalog-count">135</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Мойки высокого давления
+                      <span class="navbar-catalog-count">2</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Насосы и компрессоры
+                      <span class="navbar-catalog-count">2</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Автомагнитолы
+                      <span class="navbar-catalog-count">29</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Автомобильные аксессуары и комплектующие
+                      <span class="navbar-catalog-count">23</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Автомобильные колонки
+                      <span class="navbar-catalog-count">32</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Автомобильные сабвуферы
+                      <span class="navbar-catalog-count">3</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Автомобильные усилители
+                      <span class="navbar-catalog-count">18</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Парктроники и сигнализация
+                      <span class="navbar-catalog-count">3</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Видеорегистраторы
+                      <span class="navbar-catalog-count">18</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Навигаторы
+                      <span class="navbar-catalog-count">3</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Шины и диски
+                      <span class="navbar-catalog-count">2</span>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <div class="categories-item-title" title="Часто ищут б/у">
+                      Часто ищут
+                    </div>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Навигатор
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Антирадар
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Аптечка
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Сигнализация
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="navbar-catalog-categories">
+              <div class="subcategories-overlay">
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <a class="categories-item-title">
+                      Фото и видеотехника
+                      <span class="navbar-catalog-count">20</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Фотоаппараты
+                      <span class="navbar-catalog-count">10</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Видеокамеры
+                      <span class="navbar-catalog-count">9</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Аксессуары для фото и видеокамер
+                      <span class="navbar-catalog-count">1</span>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <div class="categories-item-title" title="Часто ищут б/у">
+                      Часто ищут
+                    </div>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Штатив
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Вспышка
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Объектив
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="navbar-catalog-categories">
+              <div class="subcategories-overlay">
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <a class="categories-item-title">
+                      Хобби и отдых
+                      <span class="navbar-catalog-count">62</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Зимний спортивный инвентарь
+                      <span class="navbar-catalog-count">1</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Металлоискатели
+                      <span class="navbar-catalog-count">8</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Бинокли и оптика
+                      <span class="navbar-catalog-count">6</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Водный инвентарь
+                      <span class="navbar-catalog-count">11</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Тату-машинки
+                      <span class="navbar-catalog-count">4</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Велосипеды и самокаты
+                      <span class="navbar-catalog-count">8</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Пневматика и электрошокеры
+                      <span class="navbar-catalog-count">10</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Тренажеры
+                      <span class="navbar-catalog-count">1</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Роликовые и ледовые коньки
+                      <span class="navbar-catalog-count">1</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Туризм
+                      <span class="navbar-catalog-count">12</span>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <div class="categories-item-title" title="Часто ищут б/у">
+                      Часто ищут
+                    </div>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Велосипеды
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Самокат
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Удочки
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Гантели
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Боксерские перчатки
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Для сноуборда
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <div class="categories-item-title" title="Акции б/у">
+                      Акции
+                    </div>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title"> Велосипеды SALE </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title"> Самокат SALE </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="navbar-catalog-categories">
+              <div class="subcategories-overlay">
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <a class="categories-item-title">
+                      Личные вещи
+                      <span class="navbar-catalog-count">27</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Канцтовары
+                      <span class="navbar-catalog-count">3</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Часы
+                      <span class="navbar-catalog-count">22</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Кошельки и сумки
+                      <span class="navbar-catalog-count">2</span>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <div class="categories-item-title" title="Часто ищут б/у">
+                      Часто ищут
+                    </div>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Часы
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Tissot
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Casio
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Шуба
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Коллекционные фигурки
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <div class="categories-item-title" title="Акции б/у">
+                      Акции
+                    </div>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title"> Часы SALE </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="navbar-catalog-categories">
+              <div class="subcategories-overlay">
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <a class="categories-item-title">
+                      Аудиотехника
+                      <span class="navbar-catalog-count">110</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Музыкальные инструменты
+                      <span class="navbar-catalog-count">11</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      MP3 плееры
+                      <span class="navbar-catalog-count">1</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Колонки
+                      <span class="navbar-catalog-count">95</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Домашние кинотеатры
+                      <span class="navbar-catalog-count">2</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Музыкальные центры
+                      <span class="navbar-catalog-count">1</span>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <div class="categories-item-title" title="Часто ищут б/у">
+                      Часто ищут
+                    </div>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Колонка JBL
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Яндекс станция
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Домашний кинотеатр
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="navbar-catalog-categories">
+              <div class="subcategories-overlay">
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <a class="categories-item-title">
+                      ТВ и Видео
+                      <span class="navbar-catalog-count">147</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Телевизоры
+                      <span class="navbar-catalog-count">110</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Видео
+                      <span class="navbar-catalog-count">1</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Проекторы
+                      <span class="navbar-catalog-count">1</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Цифровое телевидение
+                      <span class="navbar-catalog-count">11</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Аксессуары для ТВ и видео
+                      <span class="navbar-catalog-count">24</span>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <div class="categories-item-title" title="Часто ищут б/у">
+                      Часто ищут
+                    </div>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Телевизор
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Тв Samsung
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Тв Dexp
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Тв LG
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Кронштейн для ТВ
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Тв приставки
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <div class="categories-item-title" title="Акции б/у">
+                      Акции
+                    </div>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title"> Телевизор SALE </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="navbar-catalog-categories">
+              <div class="subcategories-overlay">
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <a class="categories-item-title">
+                      Товары для детей
+                      <span class="navbar-catalog-count">3</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Детские автокресла
+                      <span class="navbar-catalog-count">2</span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Детские игрушки
+                      <span class="navbar-catalog-count">1</span>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="subcategories">
+                  <div class="categories-item">
+                    <div class="categories-item-title" title="Часто ищут б/у">
+                      Часто ищут
+                    </div>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Автокресла
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                  <div class="subcategories-item">
+                    <a class="subcategories-item-title">
+                      Коляски
+                      <span class="navbar-catalog-count"></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar-catalog-overlay" id="navbar-catalog-overlay"></div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - Pobeda_MVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <div class="navbar" style="top: -20px" id="navbar">
+      <div class="j-container navbar-container">
+        <a href="../html/index.html"
+          ><span data-svg="logo" class="navbar-logo"></span
+        ></a>
+        <div class="navbar-city">
+          <div class="navbar-city-icon">
+            <i class="ui-icon ui-icon-place"></i>
+          </div>
+          <div class="navbar-city-content">
+            <div class="navbar-city-label">
+              <div class="j-dropdown">
+                <div class="j-dropdown-header">Набережные Челны</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-catalog-button" id="navbarButton">
+          <i class="ui-icon ui-icon-catalog"></i>
+          <div class="navbar-catalog-button-label">Каталог</div>
+        </div>
+        <div class="elastic-search">
+          <form class="elastic-search-wrapper" autocomplete="off">
+            <input
+              class="elastic-search-input"
+              type="text"
+              value=""
+              placeholder="Я хочу купить..."
+            />
+            <div class="elastic-search-clear"></div>
+          </form>
+          <button class="elastic-search-button" aria-label="Поиск">
+            <i class="ui-icon ui-icon-search"></i>
+          </button>
+        </div>
+        <div class="nav">
+          <div class="nav-item">
+            <i class="ui-icon ui-icon-like"></i>
+            <div class="nav-item-label">Избранное</div>
+          </div>
+          <div class="nav-item">
+            <i class="ui-icon ui-icon-inventory"></i>
+            <div class="nav-item-label">Заказы</div>
+          </div>
+          <div class="nav-item">
+            <i class="ui-icon ui-icon-person"></i>
+            <div class="nav-item-label">Войти</div>
+          </div>
+          <a href="../html/cart.html">
+            <div class="nav-item">
+              <i class="ui-icon ui-icon-cart"></i>
+              <div class="nav-item-label">Корзина</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <main class="main">
+        @RenderBody()
+    </main>
+
+    <footer class="footer">
+        <div class="j-container footer-container">
+            <div class="footer-logo">
+                <span data-svg="logo" class="footer-logo-icon"></span>
+                <div class="footer-logo-label">Победа - комиссионный магазин</div>
+            </div>
+            <div class="footer-categories">
+                <a href="#" class="footer-categories-item">Доставка</a>
+                <a href="#" class="footer-categories-item">Кредит</a>
+                <a href="#" class="footer-categories-item">Оплата и возврат</a>
+                <a href="#" class="footer-categories-item">Обратная связь</a>
+                <a href="#" class="footer-categories-item">Телефоны</a>
+                <a href="#" class="footer-categories-item">Компьютерная техника</a>
+                <a href="#" class="footer-categories-item">Инструмент</a>
+                <a href="#" class="footer-categories-item">Игры и приставки</a>
+                <a href="#" class="footer-categories-item">Товары для дома</a>
+                <a href="#" class="footer-categories-item">Авто</a>
+                <a href="#" class="footer-categories-item">Фото и видеотехника</a>
+                <a href="#" class="footer-categories-item">Хобби и отдых</a>
+                <a href="#" class="footer-categories-item">Личные вещи</a>
+                <a href="#" class="footer-categories-item">Аудиотехника</a>
+                <a href="#" class="footer-categories-item">ТВ и Видео</a>
+                <a href="#" class="footer-categories-item">Товары для детей</a>
+            </div>
+            <div class="footer-contacts">
+                <div class="footer-contacts-email">
+                    Отзывы, претензии и предложения по работе присылайте на почту
+                    <a href="mailto:otzyv@pobeda63.ru">otzyv@pobeda63.ru</a>
+                </div>
+                <div class="footer-contacts-email">
+                    По вопросам оптовых поставок, направляйте свои предложения на
+                    <a href="mailto:opt@pobeda63.ru">opt@pobeda63.ru</a>
+                </div>
+                <a href="#" class="footer-contacts-item">Политика конфиденциальности</a>
+                <a href="#" class="footer-contacts-item">Пользовательское Соглашение</a>
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/main-components.js"></script>
+    <script src="~/js/order.js"></script>
+    <script src="~/js/product.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
