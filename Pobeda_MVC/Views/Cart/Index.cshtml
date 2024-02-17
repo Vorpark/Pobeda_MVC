@@ -3,14 +3,13 @@
         <div class="j-container">
             <div class="breadcrumbs">
                 <span>
-                    <a class="breadcrumbs-crumb breadcrumbs-crumb-previus"
-                       href="../html/index.html">
+                    <a class="breadcrumbs-crumb breadcrumbs-crumb-previus" asp-controller="Main" asp-action="Index">
                         <span>Главная</span>
                     </a>
                 </span>
                 <i class="ui-icon ui-icon-arrow-angleright"></i>
                 <span>
-                    <a class="breadcrumbs-crumb breadcrumbs-crumb-current">
+                    <a class="breadcrumbs-crumb breadcrumbs-crumb-current" asp-controller="Cart" asp-action="Index">
                         <span>Корзина</span>
                     </a>
                 </span>
@@ -31,12 +30,12 @@
                                 <div class="cart-card">
                                     <div class="cart-card--content">
                                         <div class="cart-card--image">
-                                            <a href="../html/product.html">
-                                                <img src="../img/product_photo_1.webp" alt="" />
+                                            <a asp-controller="Product" asp-action="Index">
+                                                <img src="~/img/product_photo_1.webp" alt="" />
                                             </a>
                                         </div>
                                         <div class="cart-card--info">
-                                            <a href="../html/product.html">
+                                            <a asp-controller="Product" asp-action="Index">
                                                 <div class="cart-card--title">
                                                     Системный блок
                                                 </div>
@@ -55,12 +54,12 @@
                                 <div class="cart-card">
                                     <div class="cart-card--content">
                                         <div class="cart-card--image">
-                                            <a href="../html/product.html">
-                                                <img src="../img/product_photo_1.webp" alt="" />
+                                            <a asp-controller="Product" asp-action="Index">
+                                                <img src="~/img/product_photo_1.webp" alt="" />
                                             </a>
                                         </div>
                                         <div class="cart-card--info">
-                                            <a href="../html/product.html">
+                                            <a asp-controller="Product" asp-action="Index">
                                                 <div class="cart-card--title">
                                                     Системный блок
                                                 </div>
@@ -104,7 +103,7 @@
                             </div>
                             <div class="cart-order--actions">
                                 <button class="j-button main"
-                                        onclick="document.location='../html/order.html'">
+                                        onclick="document.location='/Order'">
                                     Оформить заказ
                                 </button><button class="j-button transparent">
                                     Хочу в кредит

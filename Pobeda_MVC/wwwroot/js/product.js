@@ -4,6 +4,6 @@ button_pay.onclick = function () {
   if (button_pay_text.innerText == "Купить") {
     button_pay_text.innerText = "В корзине";
   } else {
-    window.location.href = "../html/cart.html";
+    window.location.href = "/Cart";
   }
 };

@@ -30,7 +30,7 @@
                 <picture>
                     <source srcset="/img/main_banner-desktop.png"
                             media="(max-width: 1439px)" />
-                    <img src="../img/main_banner-desktop.png" alt="" />
+                    <img src="~/img/main_banner-desktop.png" alt="" />
                 </picture>
             </div>
         </div>
@@ -51,7 +51,7 @@
                             <img data-lazy-load="loaded"
                                  data-lazy="/img/telefony.png"
                                  data-load=""
-                                 src="../img/telefony.png" />
+                                 src="~/img/telefony.png" />
                         </div>
                         <div class="main-category-item__title">Телефоны</div>
                     </a>
@@ -60,7 +60,7 @@
                             <img data-lazy-load="loaded"
                                  data-lazy="/img/kompyuternaya-tehnika.png"
                                  data-load=""
-                                 src="../img/kompyuternaya-tehnika.png" />
+                                 src="~/img/kompyuternaya-tehnika.png" />
                         </div>
                         <div class="main-category-item__title">Компьютеры</div>
                     </a>
@@ -69,7 +69,7 @@
                             <img data-lazy-load="loaded"
                                  data-lazy="/img/instrument.png"
                                  data-load=""
-                                 src="../img/instrument.png" />
+                                 src="~/img/instrument.png" />
                         </div>
                         <div class="main-category-item__title">Инструменты</div>
                     </a>
@@ -78,7 +78,7 @@
                             <img data-lazy-load="loaded"
                                  data-lazy="/img/igry-i-pristavki.png"
                                  data-load=""
-                                 src="../img/igry-i-pristavki.png" />
+                                 src="~/img/igry-i-pristavki.png" />
                         </div>
                         <div class="main-category-item__title">Игры и приставки</div>
                     </a>
@@ -87,7 +87,7 @@
                             <img data-lazy-load="loaded"
                                  data-lazy="/img/tovary-dlya-doma.png"
                                  data-load=""
-                                 src="../img/tovary-dlya-doma.png" />
+                                 src="~/img/tovary-dlya-doma.png" />
                         </div>
                         <div class="main-category-item__title">Товары для дома</div>
                     </a>
@@ -96,7 +96,7 @@
                             <img data-lazy-load="loaded"
                                  data-lazy="/img/hobbi-i-otdyh.png"
                                  data-load=""
-                                 src="../img/hobbi-i-otdyh.png" />
+                                 src="~/img/hobbi-i-otdyh.png" />
                         </div>
                         <div class="main-category-item__title">Хобби и отдых</div>
                     </a>
@@ -115,15 +115,14 @@
                     <div class="widget-grid-item">
                         <div class="card">
                             <div class="card-images">
-                                <a class="card-images-wrapper"
+                                <a class="card-images-wrapper" asp-controller="Product" asp-action="Index"
                                    rel="noreferrer"
-                                   href="../html/product.html"
                                    title="Системный блок черный">
                                     <div class="card-images-desktop is-active">
                                         <div class="card-images-overlay"></div>
                                         <div class="card-images-img">
                                             <img alt="Купить Системный блок черный б/у в Самаре. Цена 59000 рублей"
-                                                 src="../img/product_photo_1.webp" />
+                                                 src="~/img/product_photo_1.webp" />
                                         </div>
                                     </div>
                                 </a>
@@ -134,8 +133,7 @@
                                         59 000 <span class="rub">рублей</span>
                                     </div>
                                 </div>
-                                <a class="card-title"
-                                   href="../html/product.html"
+                                <a class="card-title" asp-controller="Product" asp-action="Index"
                                    rel="noreferrer"
                                    title="Купить Системный блок черный б/у в Самаре. Цена 59000 рублей">Системный блок черный</a>
                             </div>
@@ -143,7 +141,7 @@
                                 <div class="card-city">Самара</div>
                                 <div class="card-action-more"
                                      title="Купить Системный блок черный б/у в Самаре. Цена 59000 рублей">
-                                    <a href="../html/product.html">Подробнее</a>
+                                    <a asp-controller="Product" asp-action="Index">Подробнее</a>
                                 </div>
                             </div>
                         </div>
@@ -174,17 +172,17 @@
                 </div>
                 <div class="interactive-buy--images">
                     <picture data-image="vector-blue">
-                        <img src="../img/buy-vector-blue.svg" />
+                        <img src="~/img/buy-vector-blue.svg" />
                     </picture>
                     <picture data-image="phone">
-                        <img class="desktop-phone" src="../img/buy-phone.png" />
-                        <img class="mobile-phone" src="../img/buy-phone-sm.png" />
+                        <img class="desktop-phone" src="~/img/buy-phone.png" />
+                        <img class="mobile-phone" src="~/img/buy-phone-sm.png" />
                     </picture>
                     <picture data-image="page">
-                        <img src="../img/buy-page.png" />
+                        <img src="~/img/buy-page.png" />
                     </picture>
                     <picture data-image="vector-red">
-                        <img src="../img/buy-vector-red.svg" />
+                        <img src="~/img/buy-vector-red.svg" />
                     </picture>
                 </div>
             </div>
