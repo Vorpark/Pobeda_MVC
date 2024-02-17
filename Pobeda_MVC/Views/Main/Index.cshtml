@@ -1,0 +1,193 @@
+﻿<div class="main-wrapper main-page">
+    <section class="section-filter">
+        <div class="j-container">
+            <div class="filter-quick">
+                <div class="swiper-container filter-quick--container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">
+                    <div class="swiper-wrapper filter-quick--wrapper">
+                        <div class="swiper-slide filter-quick--item">Macbook</div>
+                        <div class="swiper-slide filter-quick--item">Iphone</div>
+                        <div class="swiper-slide filter-quick--item">Часы</div>
+                        <div class="swiper-slide filter-quick--item">Перфоратор</div>
+                        <div class="swiper-slide filter-quick--item">Шуруповерт</div>
+                        <div class="swiper-slide filter-quick--item">УШМ</div>
+                        <div class="swiper-slide filter-quick--item">Телевизор</div>
+                        <div class="swiper-slide filter-quick--item">Наушники</div>
+                        <div class="swiper-slide filter-quick--item">Ноутбук</div>
+                        <div class="swiper-slide filter-quick--item">Самокат</div>
+                        <div class="swiper-slide filter-quick--item">Монитор</div>
+                        <div class="swiper-slide filter-quick--item">Телефоны</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="main-preview">
+    <div class="j-container">
+        <div class="main-preview-wrapper">
+            <div class="main-preview-slider"></div>
+            <div class="main-preview-aside">
+                <picture>
+                    <source srcset="/img/main_banner-desktop.png"
+                            media="(max-width: 1439px)" />
+                    <img src="../img/main_banner-desktop.png" alt="" />
+                </picture>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main-category">
+    <div class="j-container">
+        <div class="main-category-wrapper">
+            <div class="main-category-title">
+                Познакомьтесь <i data-display="inline" data-sm="block"></i> с
+                популярными категориями
+            </div>
+            <div class="swiper-container main-category-items swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">
+                <div class="swiper-wrapper main-category-items__wrapper"
+                     style="transform: translate3d(0px, 0px, 0px)">
+                    <a class="swiper-slide main-category-item" href="#">
+                        <div class="main-category-item__img">
+                            <img data-lazy-load="loaded"
+                                 data-lazy="/img/telefony.png"
+                                 data-load=""
+                                 src="../img/telefony.png" />
+                        </div>
+                        <div class="main-category-item__title">Телефоны</div>
+                    </a>
+                    <a class="swiper-slide main-category-item" href="#">
+                        <div class="main-category-item__img">
+                            <img data-lazy-load="loaded"
+                                 data-lazy="/img/kompyuternaya-tehnika.png"
+                                 data-load=""
+                                 src="../img/kompyuternaya-tehnika.png" />
+                        </div>
+                        <div class="main-category-item__title">Компьютеры</div>
+                    </a>
+                    <a class="swiper-slide main-category-item" href="#">
+                        <div class="main-category-item__img">
+                            <img data-lazy-load="loaded"
+                                 data-lazy="/img/instrument.png"
+                                 data-load=""
+                                 src="../img/instrument.png" />
+                        </div>
+                        <div class="main-category-item__title">Инструменты</div>
+                    </a>
+                    <a class="swiper-slide main-category-item" href="#">
+                        <div class="main-category-item__img">
+                            <img data-lazy-load="loaded"
+                                 data-lazy="/img/igry-i-pristavki.png"
+                                 data-load=""
+                                 src="../img/igry-i-pristavki.png" />
+                        </div>
+                        <div class="main-category-item__title">Игры и приставки</div>
+                    </a>
+                    <a class="swiper-slide main-category-item" href="#">
+                        <div class="main-category-item__img">
+                            <img data-lazy-load="loaded"
+                                 data-lazy="/img/tovary-dlya-doma.png"
+                                 data-load=""
+                                 src="../img/tovary-dlya-doma.png" />
+                        </div>
+                        <div class="main-category-item__title">Товары для дома</div>
+                    </a>
+                    <a class="swiper-slide main-category-item" href="#">
+                        <div class="main-category-item__img">
+                            <img data-lazy-load="loaded"
+                                 data-lazy="/img/hobbi-i-otdyh.png"
+                                 data-load=""
+                                 src="../img/hobbi-i-otdyh.png" />
+                        </div>
+                        <div class="main-category-item__title">Хобби и отдых</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main-widget">
+    <div class="j-container">
+        <div class="main-widget-wrapper">
+            <div class="widget-title">Популярные товары</div>
+            <div class="widget-grid">
+                @for (int i = 0; i < 12; i++)
+                {
+                    <div class="widget-grid-item">
+                        <div class="card">
+                            <div class="card-images">
+                                <a class="card-images-wrapper"
+                                   rel="noreferrer"
+                                   href="../html/product.html"
+                                   title="Системный блок черный">
+                                    <div class="card-images-desktop is-active">
+                                        <div class="card-images-overlay"></div>
+                                        <div class="card-images-img">
+                                            <img alt="Купить Системный блок черный б/у в Самаре. Цена 59000 рублей"
+                                                 src="../img/product_photo_1.webp" />
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-prices">
+                                    <div class="card-price">
+                                        59 000 <span class="rub">рублей</span>
+                                    </div>
+                                </div>
+                                <a class="card-title"
+                                   href="../html/product.html"
+                                   rel="noreferrer"
+                                   title="Купить Системный блок черный б/у в Самаре. Цена 59000 рублей">Системный блок черный</a>
+                            </div>
+                            <div class="card-bottom">
+                                <div class="card-city">Самара</div>
+                                <div class="card-action-more"
+                                     title="Купить Системный блок черный б/у в Самаре. Цена 59000 рублей">
+                                    <a href="../html/product.html">Подробнее</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main-buy">
+    <div class="j-container">
+        <div class="main-buy-wrapper">
+            <div class="interactive-buy">
+                <div class="interactive-buy--content">
+                    <div class="interactive-buy--header">
+                        Как покупать в Победа 63
+                    </div>
+                    <div class="interactive-buy--label">
+                        Покупать с Победой<i data-display="inline"
+                                             data-sm="block"></i>
+                        легко и выгодно!!
+                    </div>
+                    <div class="interactive-buy--actions">
+                        <button class="interactive-buy--action" data-href="#">
+                            Подробнее
+                        </button>
+                    </div>
+                </div>
+                <div class="interactive-buy--images">
+                    <picture data-image="vector-blue">
+                        <img src="../img/buy-vector-blue.svg" />
+                    </picture>
+                    <picture data-image="phone">
+                        <img class="desktop-phone" src="../img/buy-phone.png" />
+                        <img class="mobile-phone" src="../img/buy-phone-sm.png" />
+                    </picture>
+                    <picture data-image="page">
+                        <img src="../img/buy-page.png" />
+                    </picture>
+                    <picture data-image="vector-red">
+                        <img src="../img/buy-vector-red.svg" />
+                    </picture>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
