@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pobeda_MVC", "Pobeda_MVC\Pobeda_MVC.csproj", "{16E64DA5-91C6-4FC6-AEAA-B142726F976F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pobeda_MVC", "Pobeda_MVC\Pobeda_MVC.csproj", "{16E64DA5-91C6-4FC6-AEAA-B142726F976F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pobeda.Domain", "Pobeda.Domain\Pobeda.Domain.csproj", "{BC396F4A-BF44-4632-AF35-48513CFC67DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pobeda.DAL", "Pobeda.DAL\Pobeda.DAL.csproj", "{360F5C8F-1045-4FBC-942E-4EB3FA0A6FEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{16E64DA5-91C6-4FC6-AEAA-B142726F976F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16E64DA5-91C6-4FC6-AEAA-B142726F976F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16E64DA5-91C6-4FC6-AEAA-B142726F976F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC396F4A-BF44-4632-AF35-48513CFC67DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC396F4A-BF44-4632-AF35-48513CFC67DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC396F4A-BF44-4632-AF35-48513CFC67DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC396F4A-BF44-4632-AF35-48513CFC67DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{360F5C8F-1045-4FBC-942E-4EB3FA0A6FEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{360F5C8F-1045-4FBC-942E-4EB3FA0A6FEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{360F5C8F-1045-4FBC-942E-4EB3FA0A6FEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{360F5C8F-1045-4FBC-942E-4EB3FA0A6FEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
