@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Pobeda.DAL.Data;
+using Pobeda.DAL.Repository.IRepository;
+using Pobeda.DAL.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
 
@@ -36,7 +40,7 @@ void ApplyMigration()
     {
         var _db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
-        if (_db.Database.GetPendingMigrations().Count() > 0)
+        if (_db.Database.GetPendingMigrations().Any())
         {
             _db.Database.Migrate();
         }
