@@ -138,6 +138,15 @@ namespace Pobeda.DAL.Data
                 new SubCategory { Id = 91, Name = "Детские автокресла", CategoryId = 12 },
                 new SubCategory { Id = 92, Name = "Детские игрушки", CategoryId = 12 }
             );
+
+            modelBuilder.Entity<ProductFilter>().HasData(
+                new ProductFilter { Id = 1, Name = "В кредит"},
+                new ProductFilter { Id = 2, Name = "Состояние новый" },
+                new ProductFilter { Id = 3, Name = "Состояние хорошее" },
+                new ProductFilter { Id = 4, Name = "Состояние отличное" },
+                new ProductFilter { Id = 1, Name = "Состояние удовлетворительное" }
+            );
+
         }
     }
 }
