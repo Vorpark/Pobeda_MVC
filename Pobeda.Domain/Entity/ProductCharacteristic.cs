@@ -3,13 +3,13 @@ using System.ComponentModel;
 
 namespace Pobeda.Domain.Entity
 {
-    public class Characteristic
+    public class ProductCharacteristic
     {
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Поле не может быть пустым")]
         [DisplayName("Название характеристики")]
-        [MaxLength(30, ErrorMessage = "Поле не может превышать 30 символов")]
+        [MaxLength(50, ErrorMessage = "Поле не может превышать 50 символов")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Поле не может быть пустым")]

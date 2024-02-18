@@ -11,7 +11,7 @@ namespace Pobeda.Domain.Entity
 
         [Required(ErrorMessage = "Поле не может быть пустым")]
         [DisplayName("Название продукта")]
-        [MaxLength(30, ErrorMessage = "Поле не может превышать 30 символов")]
+        [MaxLength(50, ErrorMessage = "Поле не может превышать 50 символов")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Поле не может быть пустым")]
@@ -32,10 +32,10 @@ namespace Pobeda.Domain.Entity
 
         [Required(ErrorMessage = "Поле не может быть пустым")]
         [DisplayName("Название подкатегории")]
-        [MaxLength(30, ErrorMessage = "Поле не может превышать 30 символов")]
+        [MaxLength(50, ErrorMessage = "Поле не может превышать 50 символов")]
         public string SubCategory { get; set; } //Валидация соответствия подкатегории в рамках категории
 
 
-        public List<Characteristic> Characteristics {  get; set; } 
+        public List<ProductCharacteristic> Characteristics {  get; set; } 
     }
 }
