@@ -11,5 +11,8 @@ namespace Pobeda.Domain.Entity
         [DisplayName("Название категории")]
         [MaxLength(50, ErrorMessage = "Поле не может превышать 50 символов")]
         public string Name { get; set; }
+
+        public List<SubCategory> SubCategories { get; set; }
+        public List<Product> Products { get; set; }
     }
 }
