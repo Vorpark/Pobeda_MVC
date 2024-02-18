@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Pobeda.Domain.Entity;
 
 namespace Pobeda.DAL.Data
@@ -7,9 +8,9 @@ namespace Pobeda.DAL.Data
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<ProductCharacteristic> Characteristics { get; set; }
+        public DbSet<ProductCharacteristic> ProductCharacteristics { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
-        public DbSet<ProductFilter> ProductFilters { get; set; }
+        public DbSet<ProductTag> ProductTags { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
@@ -139,14 +140,13 @@ namespace Pobeda.DAL.Data
                 new SubCategory { Id = 92, Name = "Детские игрушки", CategoryId = 12 }
             );
 
-            modelBuilder.Entity<ProductFilter>().HasData(
-                new ProductFilter { Id = 1, Name = "В кредит"},
-                new ProductFilter { Id = 2, Name = "Состояние новый" },
-                new ProductFilter { Id = 3, Name = "Состояние хорошее" },
-                new ProductFilter { Id = 4, Name = "Состояние отличное" },
-                new ProductFilter { Id = 1, Name = "Состояние удовлетворительное" }
+            modelBuilder.Entity<ProductTag>().HasData(
+                new ProductTag { Id = 1, Name = "В кредит"},
+                new ProductTag { Id = 2, Name = "Состояние новый" },
+                new ProductTag { Id = 3, Name = "Состояние хорошее" },
+                new ProductTag { Id = 4, Name = "Состояние отличное" },
+                new ProductTag { Id = 5, Name = "Состояние удовлетворительное" }
             );
-
         }
     }
 }

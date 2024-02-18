@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace Pobeda.Domain.Entity
 {
-    public class ProductFilter
+    public class ProductTag
     {
         public int Id { get; set; }
 

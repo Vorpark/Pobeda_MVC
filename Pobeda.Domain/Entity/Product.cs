@@ -46,6 +46,6 @@ namespace Pobeda.Domain.Entity
 
 
         public ICollection<ProductCharacteristic> Characteristics {  get; set; }
-        public ICollection<ProductFilter> Filters { get; set; }
+        public ICollection<ProductTag> Tags { get; set; }
     }
 }
