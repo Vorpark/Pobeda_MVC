@@ -8,6 +8,7 @@ namespace Pobeda.DAL.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Characteristic> Characteristics { get; set; }
+        public DbSet<SubCategory> SubCategories { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
