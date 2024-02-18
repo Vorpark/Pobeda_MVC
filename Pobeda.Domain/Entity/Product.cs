@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace Pobeda.Domain.Entity
 {
@@ -16,12 +16,21 @@ namespace Pobeda.Domain.Entity
 
         [Required(ErrorMessage = "Поле не может быть пустым")]
         [DisplayName("Цена продукта")]
-        public double Cost { get; set; }
+        public double Price { get; set; }
 
         [Required(ErrorMessage = "Поле не может быть пустым")]
-        [DisplayName("Название продукта")]
+        [DisplayName("Город")]
+        [MaxLength(50, ErrorMessage = "Поле не может превышать 50 символов")]
+        public string City { get; set; }
+
+        [Required(ErrorMessage = "Поле не может быть пустым")]
+        [DisplayName("Описание продукта")]
         [MaxLength(200, ErrorMessage = "Поле не может превышать 200 символов")]
         public string Description { get; set; }
+
+        [Required(ErrorMessage = "Поле не может быть пустым")]
+        [Display(Name = "Изображение")]
+        public string ImageUrl { get; set; }
 
 
         [Required(ErrorMessage = "Нужно выбрать категорию")]
@@ -36,6 +45,7 @@ namespace Pobeda.Domain.Entity
         public string SubCategory { get; set; } //Валидация соответствия подкатегории в рамках категории
 
 
-        public List<ProductCharacteristic> Characteristics {  get; set; } 
+        public ICollection<ProductCharacteristic> Characteristics {  get; set; }
+        public ICollection<ProductFilter> Filters { get; set; }
     }
 }
