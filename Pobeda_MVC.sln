@@ -5,9 +5,9 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pobeda_MVC", "Pobeda_MVC\Pobeda_MVC.csproj", "{16E64DA5-91C6-4FC6-AEAA-B142726F976F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pobeda.Domain", "Pobeda.Domain\Pobeda.Domain.csproj", "{BC396F4A-BF44-4632-AF35-48513CFC67DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pobeda.Domain", "Pobeda.Domain\Pobeda.Domain.csproj", "{BC396F4A-BF44-4632-AF35-48513CFC67DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pobeda.DAL", "Pobeda.DAL\Pobeda.DAL.csproj", "{360F5C8F-1045-4FBC-942E-4EB3FA0A6FEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pobeda.DAL", "Pobeda.DAL\Pobeda.DAL.csproj", "{360F5C8F-1045-4FBC-942E-4EB3FA0A6FEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

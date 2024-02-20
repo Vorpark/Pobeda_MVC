@@ -33,16 +33,11 @@ namespace Pobeda.Domain.Entity
         public string ImageUrl { get; set; }
 
 
-        [Required(ErrorMessage = "Нужно выбрать категорию")]
-        public int CategoryId { get; set; }
-        [ForeignKey("CategoryId")]
+        [Required(ErrorMessage = "Нужно выбрать подкатегорию")]
+        public int SubCategoryId { get; set; }
+        [ForeignKey("SubCategoryId")]
         [ValidateNever]
-        public Category Category { get; set; }
-
-        [Required(ErrorMessage = "Поле не может быть пустым")]
-        [DisplayName("Название подкатегории")]
-        [MaxLength(50, ErrorMessage = "Поле не может превышать 50 символов")]
-        public string SubCategory { get; set; } //Валидация соответствия подкатегории в рамках категории
+        public SubCategory SubCategory { get; set; }
 
 
         public ICollection<ProductCharacteristic> Characteristics {  get; set; }

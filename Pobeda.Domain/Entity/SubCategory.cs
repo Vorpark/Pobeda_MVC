@@ -19,5 +19,7 @@ namespace Pobeda.Domain.Entity
         [ForeignKey("CategoryId")]
         [ValidateNever]
         public Category Category { get; set; }
+
+        public ICollection<Product> Products { get; set; }
     }
 }

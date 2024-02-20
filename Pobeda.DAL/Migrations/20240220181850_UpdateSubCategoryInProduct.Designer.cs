@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pobeda.DAL.Data;
 
@@ -10,9 +11,11 @@ using Pobeda.DAL.Data;
 namespace Pobeda.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240220181850_UpdateSubCategoryInProduct")]
+    partial class UpdateSubCategoryInProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -139,28 +142,6 @@ namespace Pobeda.DAL.Migrations
                     b.HasIndex("SubCategoryId");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            City = "Самара",
-                            Description = "Состояние хорошее.",
-                            ImageUrl = "\\products_image\\product_photo_1.webp",
-                            Name = "Системный блок",
-                            Price = 59000.0,
-                            SubCategoryId = 8
-                        },
-                        new
-                        {
-                            Id = 2,
-                            City = "Саратов",
-                            Description = "Состояние хорошее.",
-                            ImageUrl = "\\products_image\\product_photo_2.webp",
-                            Name = "Apple iPhone SE 128GB",
-                            Price = 11900.0,
-                            SubCategoryId = 1
-                        });
                 });
 
             modelBuilder.Entity("Pobeda.Domain.Entity.ProductCharacteristic", b =>
@@ -189,64 +170,6 @@ namespace Pobeda.DAL.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductCharacteristics");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Key = "Объем оперативной памяти",
-                            ProductId = 1,
-                            Value = "32 ГБ"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Key = "Тактовая частота процессора",
-                            ProductId = 1,
-                            Value = "2600 МГц"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Key = "Количество ядер процессора",
-                            ProductId = 1,
-                            Value = "6"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Key = "Тип оперативной памяти",
-                            ProductId = 1,
-                            Value = "DDR4"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Key = "Диагональ",
-                            ProductId = 2,
-                            Value = "4 дюйм."
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Key = "Объем встроенной памяти",
-                            ProductId = 2,
-                            Value = "128 ГБ"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Key = "Объем оперативной памяти",
-                            ProductId = 2,
-                            Value = "2 ГБ"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Key = "Количество ядер процессора",
-                            ProductId = 2,
-                            Value = "2"
-                        });
                 });
 
             modelBuilder.Entity("Pobeda.Domain.Entity.ProductTag", b =>
@@ -884,23 +807,6 @@ namespace Pobeda.DAL.Migrations
                     b.HasIndex("TagsId");
 
                     b.ToTable("ProductProductTag");
-
-                    b.HasData(
-                        new
-                        {
-                            ProductsId = 1,
-                            TagsId = 3
-                        },
-                        new
-                        {
-                            ProductsId = 2,
-                            TagsId = 1
-                        },
-                        new
-                        {
-                            ProductsId = 2,
-                            TagsId = 3
-                        });
                 });
 
             modelBuilder.Entity("Pobeda.Domain.Entity.Product", b =>

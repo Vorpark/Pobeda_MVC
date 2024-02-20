@@ -147,6 +147,107 @@ namespace Pobeda.DAL.Data
                 new ProductTag { Id = 4, Name = "Состояние отличное" },
                 new ProductTag { Id = 5, Name = "Состояние удовлетворительное" }
             );
+
+            var productCharacteristic1 = new ProductCharacteristic { Id = 1, };
+
+            modelBuilder.Entity<ProductCharacteristic>().HasData(
+            new ProductCharacteristic
+            {
+                Id = 1,
+                Key = "Объем оперативной памяти",
+                Value = "32 ГБ",
+                ProductId = 1
+            },
+            new ProductCharacteristic
+            {
+                Id = 2,
+                Key = "Тактовая частота процессора",
+                Value = "2600 МГц",
+                ProductId = 1
+            },
+            new ProductCharacteristic
+            {
+                Id = 3,
+                Key = "Количество ядер процессора",
+                Value = "6",
+                ProductId = 1
+            },
+            new ProductCharacteristic
+            {
+                Id = 4,
+                Key = "Тип оперативной памяти",
+                Value = "DDR4",
+                ProductId = 1
+            },
+
+            new ProductCharacteristic
+            {
+                Id = 5,
+                Key = "Диагональ",
+                Value = "4 дюйм.",
+                ProductId = 2
+            },
+            new ProductCharacteristic
+            {
+                Id = 6,
+                Key = "Объем встроенной памяти",
+                Value = "128 ГБ",
+                ProductId = 2
+            },
+            new ProductCharacteristic
+            {
+                Id = 7,
+                Key = "Объем оперативной памяти",
+                Value = "2 ГБ",
+                ProductId = 2
+            },
+            new ProductCharacteristic
+            {
+                Id = 8,
+                Key = "Количество ядер процессора",
+                Value = "2",
+                ProductId = 2
+            }
+            );
+
+            modelBuilder.Entity<Product>().HasData(
+            new Product
+            {
+                Id = 1,
+                Name = "Системный блок",
+                Price = 59000,
+                City = "Самара",
+                Description = "Состояние хорошее.",
+                ImageUrl = @"\products_image\product_photo_1.webp",
+                SubCategoryId = 8
+            },
+            new Product
+            {
+                Id = 2,
+                Name = "Apple iPhone SE 128GB",
+                Price = 11900,
+                City = "Саратов",
+                Description = "Состояние хорошее.",
+                ImageUrl = @"\products_image\product_photo_2.webp",
+                SubCategoryId = 1
+            }
+            );
+
+            modelBuilder.Entity<Product>()
+                .HasMany(p => p.Tags)
+                .WithMany(t => t.Products)
+                .UsingEntity<Dictionary<string, object>>(
+                    "ProductProductTag",
+                    r => r.HasOne<ProductTag>().WithMany().HasForeignKey("TagsId"),
+                    l => l.HasOne<Product>().WithMany().HasForeignKey("ProductsId"),
+                    je =>
+                    {
+                        je.HasKey("ProductsId", "TagsId");
+                        je.HasData(
+                            new { ProductsId = 1, TagsId = 3 },
+                            new { ProductsId = 2, TagsId = 1 },
+                            new { ProductsId = 2, TagsId = 3 });
+                    });
         }
     }
 }
