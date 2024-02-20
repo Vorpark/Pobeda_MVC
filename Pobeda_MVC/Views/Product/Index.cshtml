@@ -1,7 +1,7 @@
-﻿
+﻿@model Product
 
 <head>
-    <title>Купить системный блок | Победа</title>
+    <title>@Model.Name | Победа</title>
     <link rel="stylesheet" href="~/css/product.css" />
 </head>
 <div class="main-wrapper product-page">
@@ -21,28 +21,31 @@
             <i class="ui-icon ui-icon-arrow-angleright"></i>
             <span>
                 <a class="breadcrumbs-crumb breadcrumbs-crumb-previus">
-                    <span>Компьютерная техника</span>
+                    <span>@Model.SubCategory.Category.Name</span>
                 </a>
             </span>
             <i class="ui-icon ui-icon-arrow-angleright"></i>
             <span>
                 <a>
-                    <span>Системные блоки</span>
+                    <span>@Model.SubCategory.Name</span>
                 </a>
             </span>
             <i class="ui-icon ui-icon-arrow-angleright"></i>
             <span class="breadcrumbs-crumb breadcrumbs-crumb-current">
                 <span>
-                    <span>Системный блок</span>
+                    <span>@Model.Name</span>
                 </span>
             </span>
         </div>
     </section>
     <div class="p-header">
         <div class="j-container">
-            <h1 class="p-header--title">Системный блок</h1>
+            <h1 class="p-header--title">@Model.Name</h1>
             <div class="p-header--labels">
-                <div class="p-header--label">Состояние хорошее</div>
+                @foreach(var tag in Model.Tags)
+                {
+                    <div class="p-header--label">@tag.Name</div>
+                }
             </div>
         </div>
     </div>
@@ -50,12 +53,12 @@
         <div class="j-container">
             <div class="p-container">
                 <div class="p-image">
-                    <img src="~/img/product_photo_1.webp" alt="" />
+                    <img src=@Model.ImageUrl alt="" />
                 </div>
                 <div class="p-actions">
                     <div class="p-actions--wrapper">
                         <div class="p-actions--block price">
-                            <div class="p-price current">59 000 ₽</div>
+                            <div class="p-price current">@Model.Price.ToString("C0")</div>
                         </div>
                         <div class="p-actions--block actions">
                             <button class="j-button main p-actions--action pay"
@@ -94,7 +97,7 @@
                                     <span class="text">Рассрочка и кредит</span>
                                 </div>
                                 <div class="p-info--block-text">
-                                    Рассрочка <strong>19 300 руб.</strong><strong style="margin-right: 4px; white-space: initial">в месяц.</strong>
+                                    Рассрочка <strong>--- </strong><strong style="margin-right: 4px; white-space: initial">в месяц.</strong>
                                 </div>
                                 <div class="p-info--block-text">
                                     Онлайн подтверждение заявки за 2 минуты.
@@ -128,40 +131,23 @@
                                 Краткие характеристики
                             </div>
                             <div class="p-description--item-content">
-                                <div class="p-description--item-row">
-                                    <div class="p-description--item-name">
-                                        Объем оперативной памяти
+                                @foreach (var characteristic in Model.Characteristics)
+                                {
+                                    <div class="p-description--item-row">
+                                        <div class="p-description--item-name">@characteristic.Key</div>
+                                        <div class="p-description--item-value">@characteristic.Value</div>
                                     </div>
-                                    <div class="p-description--item-value">32 ГБ</div>
-                                </div>
-                                <div class="p-description--item-row">
-                                    <div class="p-description--item-name">
-                                        Тактовая частота процессора
-                                    </div>
-                                    <div class="p-description--item-value">2600 МГц</div>
-                                </div>
-                                <div class="p-description--item-row">
-                                    <div class="p-description--item-name">
-                                        Количество ядер процессора
-                                    </div>
-                                    <div class="p-description--item-value">6</div>
-                                </div>
-                                <div class="p-description--item-row">
-                                    <div class="p-description--item-name">
-                                        Тип оперативной памяти
-                                    </div>
-                                    <div class="p-description--item-value">DDR4</div>
-                                </div>
+                                }
                             </div>
                         </div>
                     </div>
                     <div class="p-description--item offer">
                         <div class="p-description--item-title">
-                            Купить системный блок в Набережных Челнах
+                            Купить @Model.Name в @Model.City
                         </div>
                         <div class="p-description--text">
-                            Продажа системный блок по выгодной цене. Стоимость товара в
-                            Набережных Челнах можно уточнить у консультанта нашего
+                            Продажа @Model.Name по выгодной цене. Стоимость товара в
+                            @Model.City можно уточнить у консультанта нашего
                             интернет-магазина.
                         </div>
                     </div>
@@ -174,7 +160,7 @@
                         transition: all 300ms ease-in-out 0s;
                       ">
                                 <div class="p-description--text description">
-                                    Состояние хорошее.
+                                    @Model.Description
                                     <br />
                                 </div>
                             </div>

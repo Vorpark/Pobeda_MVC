@@ -36,7 +36,7 @@ namespace Pobeda.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
 
                     b.HasData(
                         new
@@ -138,7 +138,7 @@ namespace Pobeda.DAL.Migrations
 
                     b.HasIndex("SubCategoryId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
 
                     b.HasData(
                         new
@@ -188,7 +188,7 @@ namespace Pobeda.DAL.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductCharacteristics");
+                    b.ToTable("ProductCharacteristics", (string)null);
 
                     b.HasData(
                         new
@@ -264,7 +264,7 @@ namespace Pobeda.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProductTags");
+                    b.ToTable("ProductTags", (string)null);
 
                     b.HasData(
                         new
@@ -314,7 +314,7 @@ namespace Pobeda.DAL.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("SubCategories");
+                    b.ToTable("SubCategories", (string)null);
 
                     b.HasData(
                         new
@@ -883,7 +883,7 @@ namespace Pobeda.DAL.Migrations
 
                     b.HasIndex("TagsId");
 
-                    b.ToTable("ProductProductTag");
+                    b.ToTable("ProductProductTag", (string)null);
 
                     b.HasData(
                         new

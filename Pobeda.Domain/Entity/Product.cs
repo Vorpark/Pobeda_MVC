@@ -32,7 +32,6 @@ namespace Pobeda.Domain.Entity
         [Display(Name = "Изображение")]
         public string ImageUrl { get; set; }
 
-
         [Required(ErrorMessage = "Нужно выбрать подкатегорию")]
         public int SubCategoryId { get; set; }
         [ForeignKey("SubCategoryId")]
