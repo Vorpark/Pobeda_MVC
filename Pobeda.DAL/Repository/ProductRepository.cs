@@ -15,5 +15,11 @@ namespace Pobeda.DAL.Repository
         {
             _db.Products.Update(obj);
         }
+        public IEnumerable<Product> GetPopularProducts()
+        {
+            //Реализация фильтра продвижения продукта
+            IQueryable<Product> query = dbSet.Take(12);
+            return query.ToList();
+        }
     }
 }

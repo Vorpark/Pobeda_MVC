@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Product>
 
 <head>
     <title>Комиссионный магазин «Победа»</title>
@@ -116,19 +116,17 @@
         <div class="main-widget-wrapper">
             <div class="widget-title">Популярные товары</div>
             <div class="widget-grid">
-                @for (int i = 0; i < 12; i++)
+                @foreach (var product in Model)
                 {
                     <div class="widget-grid-item">
                         <div class="card">
                             <div class="card-images">
-                                <a class="card-images-wrapper" asp-controller="Product" asp-action="Index"
-                                   rel="noreferrer"
-                                   title="Системный блок черный">
-                                    <div class="card-images-desktop is-active">
+                                <a class="card-images-wrapper" asp-controller="Product" asp-action="Index" asp-route-id="@product.Id"
+                                   title="@product.Name">
+                                    <div class="card-images-desktop">
                                         <div class="card-images-overlay"></div>
                                         <div class="card-images-img">
-                                            <img alt="Купить Системный блок черный б/у в Самаре. Цена 59000 рублей"
-                                                 src="~/img/product_photo_1.webp" />
+                                            <img src= @product.ImageUrl />
                                         </div>
                                     </div>
                                 </a>
@@ -136,18 +134,17 @@
                             <div class="card-content">
                                 <div class="card-prices">
                                     <div class="card-price">
-                                        59 000 <span class="rub">рублей</span>
+                                        @product.Price.ToString("C0")
                                     </div>
                                 </div>
-                                <a class="card-title" asp-controller="Product" asp-action="Index"
-                                   rel="noreferrer"
-                                   title="Купить Системный блок черный б/у в Самаре. Цена 59000 рублей">Системный блок черный</a>
+                                <a class="card-title" asp-controller="Product" asp-action="Index" asp-route-id="@product.Id"
+                                   title="Купить @product.Name в @product.City. Цена @product.Price рублей">@product.Name</a>
                             </div>
                             <div class="card-bottom">
-                                <div class="card-city">Самара</div>
+                                <div class="card-city">@product.City</div>
                                 <div class="card-action-more"
-                                     title="Купить Системный блок черный б/у в Самаре. Цена 59000 рублей">
-                                    <a asp-controller="Product" asp-action="Index">Подробнее</a>
+                                     title="Купить @product.Name в @product.City. Цена @product.Price рублей">
+                                    <a asp-controller="Product" asp-action="Index" asp-route-id="@product.Id">Подробнее</a>
                                 </div>
                             </div>
                         </div>
