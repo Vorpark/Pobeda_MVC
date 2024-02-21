@@ -11,6 +11,7 @@ namespace Pobeda_MVC.Controllers
         {
             _unitOfWork = unitOfWork;
         }
+
         [HttpGet]
         public IActionResult Index(int? id)
         {

@@ -974,3 +974,27 @@ button {
     --offset-top: 154px;
   }
 }
+
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px 0;
+}
+
+.breadcrumbs-crumb {
+    font-size: 14px;
+}
+
+.breadcrumbs .ui-icon-arrow-angleright {
+    margin: 0 4px;
+}
+
+.breadcrumbs-crumb-current {
+    color: #adadad;
+}
+
+.ui-icon-arrow-angleright:before {
+    content: url(../img/arrow-angle-2.svg);
+}
