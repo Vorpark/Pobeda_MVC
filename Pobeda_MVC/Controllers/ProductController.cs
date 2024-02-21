@@ -4,6 +4,7 @@ using Pobeda.Domain.Entity;
 
 namespace Pobeda_MVC.Controllers
 {
+    [Route("product")]
     public class ProductController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -13,6 +14,7 @@ namespace Pobeda_MVC.Controllers
         }
 
         [HttpGet]
+        [Route("{id:int}")]
         public IActionResult Index(int? id)
         {
             if (id == null)

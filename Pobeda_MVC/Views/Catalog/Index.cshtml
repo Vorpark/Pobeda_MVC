@@ -6,18 +6,16 @@
 </head>
 <div class="main-wrapper catalog-page">
     <section class="j-container">
-        <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
-            <span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                <a href="/" class="breadcrumbs-crumb breadcrumbs-crumb-previus" title="Комиссионный магазин «Победа»" itemprop="item">
-                    <span itemprop="name">Главная</span>
-                    <meta itemprop="position" content="1">
+        <div class="breadcrumbs">
+            <span itemprop="itemListElement">
+                <a asp-controller="Main" asp-action="Index" class="breadcrumbs-crumb breadcrumbs-crumb-previus" title="Комиссионный магазин «Победа»" itemprop="item">
+                    <span>Главная</span>
                 </a>
             </span>
             <i class="ui-icon ui-icon-arrow-angleright"></i>
-            <span class="breadcrumbs-crumb breadcrumbs-crumb-current" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" title="">
-                <span itemprop="item">
-                    <span itemprop="name">Каталог</span>
-                    <meta itemprop="position" content="2">
+            <span class="breadcrumbs-crumb breadcrumbs-crumb-current">
+                <span>
+                    Каталог
                 </span>
             </span>
         </div>
@@ -28,11 +26,11 @@
             <div class="catalog-page-category" data-macy-complete="1" style="width: calc(25% - 18.75px); position: absolute; top: 0px; left: 0px;">
                 <i class="ui-icon ui-icon-category-telefony"></i>
                 <div class="catalog-page-category-list">
-                    <a class="catalog-page-category-title" title="Купить Телефоны б/у" href="/catalog/telefony/">
+                    <a class="catalog-page-category-title" title="Купить Телефоны б/у" asp-action="RedirectToCategory" asp-route-categoryName="телефоны">
                         <span class="catalog-page-category-title-label">Телефоны</span>
                         <span class="catalog-page-category-title-count">52 052</span>
                     </a>
-                    <a class="catalog-page-category-child" title="Купить Сотовые телефоны б/у" href="/catalog/telefony/sotovye-telefony/">
+                    <a class="catalog-page-category-child" title="Купить Сотовые телефоны б/у" asp-action="RedirectToSubCategory" asp-route-categoryName="телефоны" asp-route-subCategoryName="сотовые-телефоны">
                         <span class="catalog-page-category-child-title">Сотовые телефоны</span>
                         <span class="catalog-page-category-child-count">38 554</span>
                     </a>
@@ -43,10 +41,6 @@
                     <a class="catalog-page-category-child" title="Купить Наушники для телефонов б/у" href="/catalog/telefony/naushniki-dlya-telefonov/">
                         <span class="catalog-page-category-child-title">Наушники для телефонов</span>
                         <span class="catalog-page-category-child-count">4 685</span>
-                    </a>
-                    <a class="catalog-page-category-child" title="Купить Телефоны для дома и офиса б/у" href="/catalog/telefony/telefony-dlya-doma-i-ofisa/">
-                        <span class="catalog-page-category-child-title">Телефоны для дома и офиса</span>
-                        <span class="catalog-page-category-child-count">19</span>
                     </a>
                     <a class="catalog-page-category-child" title="Купить Рации б/у" href="/catalog/telefony/racii/">
                         <span class="catalog-page-category-child-title">Рации</span>
@@ -333,10 +327,6 @@
                         <span class="catalog-page-category-child-title">Навигаторы</span>
                         <span class="catalog-page-category-child-count">34</span>
                     </a>
-                    <a class="catalog-page-category-child" title="Купить Радар-детекторы б/у" href="/catalog/avto/radardetektory/">
-                        <span class="catalog-page-category-child-title">Радар-детекторы</span>
-                        <span class="catalog-page-category-child-count">76</span>
-                    </a>
                     <a class="catalog-page-category-child" title="Купить Шины и диски б/у" href="/catalog/avto/shiny-i-diski/">
                         <span class="catalog-page-category-child-title">Шины и диски</span>
                         <span class="catalog-page-category-child-count">139</span>
@@ -349,10 +339,6 @@
                     <a class="catalog-page-category-title" title="Купить Фото и видеотехника б/у" href="/catalog/foto-i-videotehnika/">
                         <span class="catalog-page-category-title-label">Фото и видеотехника</span>
                         <span class="catalog-page-category-title-count">856</span>
-                    </a>
-                    <a class="catalog-page-category-child" title="Купить Фоторамки б/у" href="/catalog/foto-i-videotehnika/fotoramki/">
-                        <span class="catalog-page-category-child-title">Фоторамки</span>
-                        <span class="catalog-page-category-child-count">17</span>
                     </a>
                     <a class="catalog-page-category-child" title="Купить Фотоаппараты б/у" href="/catalog/foto-i-videotehnika/fotoapparaty/">
                         <span class="catalog-page-category-child-title">Фотоаппараты</span>
@@ -379,10 +365,6 @@
                         <span class="catalog-page-category-child-title">Зимний спортивный инвентарь</span>
                         <span class="catalog-page-category-child-count">149</span>
                     </a>
-                    <a class="catalog-page-category-child" title="Купить Мототехника б/у" href="/catalog/hobbi-i-otdyh/mototehnika/">
-                        <span class="catalog-page-category-child-title">Мототехника</span>
-                        <span class="catalog-page-category-child-count">33</span>
-                    </a>
                     <a class="catalog-page-category-child" title="Купить Металлоискатели б/у" href="/catalog/hobbi-i-otdyh/metalloiskateli/">
                         <span class="catalog-page-category-child-title">Металлоискатели</span>
                         <span class="catalog-page-category-child-count">113</span>
@@ -407,14 +389,6 @@
                         <span class="catalog-page-category-child-title">Пневматика и электрошокеры</span>
                         <span class="catalog-page-category-child-count">242</span>
                     </a>
-                    <a class="catalog-page-category-child" title="Купить Спортивный инвентарь б/у" href="/catalog/hobbi-i-otdyh/sportivnyi-inventar/">
-                        <span class="catalog-page-category-child-title">Спортивный инвентарь</span>
-                        <span class="catalog-page-category-child-count">269</span>
-                    </a>
-                    <a class="catalog-page-category-child" title="Купить Товары для животных б/у" href="/catalog/hobbi-i-otdyh/tovary-dlya-jivotnyh/">
-                        <span class="catalog-page-category-child-title">Товары для животных</span>
-                        <span class="catalog-page-category-child-count">355</span>
-                    </a>
                     <a class="catalog-page-category-child" title="Купить Тренажеры б/у" href="/catalog/hobbi-i-otdyh/trenajery/">
                         <span class="catalog-page-category-child-title">Тренажеры</span>
                         <span class="catalog-page-category-child-count">50</span>
@@ -427,10 +401,6 @@
                         <span class="catalog-page-category-child-title">Туризм</span>
                         <span class="catalog-page-category-child-count">559</span>
                     </a>
-                    <a class="catalog-page-category-child" title="Купить Квадрокоптеры б/у" href="/catalog/hobbi-i-otdyh/kvadrokoptery/">
-                        <span class="catalog-page-category-child-title">Квадрокоптеры</span>
-                        <span class="catalog-page-category-child-count">56</span>
-                    </a>
                 </div>
             </div>
             <div class="catalog-page-category" data-macy-complete="1" style="width: calc(25% - 18.75px); position: absolute; top: 783px; left: calc(50% + 12.5px);">
@@ -440,21 +410,9 @@
                         <span class="catalog-page-category-title-label">Личные вещи</span>
                         <span class="catalog-page-category-title-count">5 329</span>
                     </a>
-                    <a class="catalog-page-category-child" title="Купить Коллекционирование б/у" href="/catalog/lichnye-vecshi/kollekcionirovanie/">
-                        <span class="catalog-page-category-child-title">Коллекционирование</span>
-                        <span class="catalog-page-category-child-count">156</span>
-                    </a>
-                    <a class="catalog-page-category-child" title="Купить Обувь б/у" href="/catalog/lichnye-vecshi/obuv/">
-                        <span class="catalog-page-category-child-title">Обувь</span>
-                        <span class="catalog-page-category-child-count">455</span>
-                    </a>
                     <a class="catalog-page-category-child" title="Купить Канцтовары б/у" href="/catalog/lichnye-vecshi/kanctovary/">
                         <span class="catalog-page-category-child-title">Канцтовары</span>
                         <span class="catalog-page-category-child-count">779</span>
-                    </a>
-                    <a class="catalog-page-category-child" title="Купить Одежда б/у" href="/catalog/lichnye-vecshi/odejda/">
-                        <span class="catalog-page-category-child-title">Одежда</span>
-                        <span class="catalog-page-category-child-count">1 672</span>
                     </a>
                     <a class="catalog-page-category-child" title="Купить Часы б/у" href="/catalog/lichnye-vecshi/chasy/">
                         <span class="catalog-page-category-child-title">Часы</span>
@@ -492,10 +450,6 @@
                     <a class="catalog-page-category-child" title="Купить Музыкальные центры б/у" href="/catalog/audiotehnika/muzykalnye-centry/">
                         <span class="catalog-page-category-child-title">Музыкальные центры</span>
                         <span class="catalog-page-category-child-count">81</span>
-                    </a>
-                    <a class="catalog-page-category-child" title="Купить Ресиверы б/у" href="/catalog/audiotehnika/resivery/">
-                        <span class="catalog-page-category-child-title">Ресиверы</span>
-                        <span class="catalog-page-category-child-count">59</span>
                     </a>
                 </div>
             </div>
@@ -542,18 +496,6 @@
                     <a class="catalog-page-category-child" title="Купить Детские игрушки б/у" href="/catalog/tovary-dlya-detei/detskie-igrushki/">
                         <span class="catalog-page-category-child-title">Детские игрушки</span>
                         <span class="catalog-page-category-child-count">352</span>
-                    </a>
-                    <a class="catalog-page-category-child" title="Купить Детские коляски б/у" href="/catalog/tovary-dlya-detei/detskie-kolyaski/">
-                        <span class="catalog-page-category-child-title">Детские коляски</span>
-                        <span class="catalog-page-category-child-count">21</span>
-                    </a>
-                    <a class="catalog-page-category-child" title="Купить Радио и видео няни б/у" href="/catalog/tovary-dlya-detei/radio-i-video-nyani/">
-                        <span class="catalog-page-category-child-title">Радио и видео няни</span>
-                        <span class="catalog-page-category-child-count">17</span>
-                    </a>
-                    <a class="catalog-page-category-child" title="Купить Товары для младенцев б/у" href="/catalog/tovary-dlya-detei/tovary-dlya-mladencev/">
-                        <span class="catalog-page-category-child-title">Товары для младенцев</span>
-                        <span class="catalog-page-category-child-count">29</span>
                     </a>
                 </div>
             </div>
