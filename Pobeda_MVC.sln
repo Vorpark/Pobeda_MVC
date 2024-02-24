@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pobeda.Domain", "Pobeda.Dom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pobeda.DAL", "Pobeda.DAL\Pobeda.DAL.csproj", "{360F5C8F-1045-4FBC-942E-4EB3FA0A6FEC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pobeda.Utility", "Pobeda.Utility\Pobeda.Utility.csproj", "{BB3BC396-BA3F-4598-A7E2-3ADD5CFD908E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{360F5C8F-1045-4FBC-942E-4EB3FA0A6FEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{360F5C8F-1045-4FBC-942E-4EB3FA0A6FEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{360F5C8F-1045-4FBC-942E-4EB3FA0A6FEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB3BC396-BA3F-4598-A7E2-3ADD5CFD908E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB3BC396-BA3F-4598-A7E2-3ADD5CFD908E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB3BC396-BA3F-4598-A7E2-3ADD5CFD908E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB3BC396-BA3F-4598-A7E2-3ADD5CFD908E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

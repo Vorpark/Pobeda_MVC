@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace Pobeda.DAL.Repository
 {
-    public class Repository<T> : IRepository<T>
+    abstract public class Repository<T> : IRepository<T>
         where T : class
     {
         private readonly ApplicationDbContext _db;

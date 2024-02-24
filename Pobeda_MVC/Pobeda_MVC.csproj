@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Pobeda.DAL\Pobeda.DAL.csproj" />
+    <ProjectReference Include="..\Pobeda.Utility\Pobeda.Utility.csproj" />
   </ItemGroup>
 
 </Project>
