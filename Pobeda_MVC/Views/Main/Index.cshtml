@@ -121,7 +121,7 @@
                     <div class="widget-grid-item">
                         <div class="card">
                             <div class="card-images">
-                                <a class="card-images-wrapper" asp-controller="Product" asp-action="Index" asp-route-name="@product.TranslitName"
+                                <a class="card-images-wrapper" href="/catalog/@product.SubCategory.Category.TranslitName/@product.SubCategory.TranslitName/@product.TranslitName/"
                                    title="@product.Name">
                                     <div class="card-images-desktop">
                                         <div class="card-images-overlay"></div>
@@ -137,14 +137,14 @@
                                         @product.Price.ToString("C0")
                                     </div>
                                 </div>
-                                <a class="card-title" asp-controller="Product" asp-action="Index" asp-route-name="@product.TranslitName"
+                                <a class="card-title" href="/catalog/@product.SubCategory.Category.TranslitName/@product.SubCategory.TranslitName/@product.TranslitName/"
                                    title="Купить @product.Name в @product.City. Цена @product.Price рублей">@product.Name</a>
                             </div>
                             <div class="card-bottom">
                                 <div class="card-city">@product.City</div>
                                 <div class="card-action-more"
                                      title="Купить @product.Name в @product.City. Цена @product.Price рублей">
-                                    <a asp-controller="Product" asp-action="Index" asp-route-name="@product.TranslitName">Подробнее</a>
+                                    <a href="/catalog/@product.SubCategory.Category.TranslitName/@product.SubCategory.TranslitName/@product.TranslitName/">Подробнее</a>
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Pobeda.DAL.Repository.IRepository;
-using Pobeda.Utility;
+using Pobeda.Domain.Entity;
 
 namespace Pobeda_MVC.Controllers
 {
@@ -24,11 +24,22 @@ namespace Pobeda_MVC.Controllers
         {
             return View();
         }
+
         [HttpGet]
         [Route("{categoryName}/{subCategoryName}")]
         public IActionResult SubCategory(string categoryName, string subCategoryName)
         {
             return View();
+        }
+
+        [HttpGet]
+        [Route("{categoryName}/{subCategoryName}/{name}")]
+        public IActionResult Product(string categoryName, string subCategoryName, string name)
+        {
+            //Отображение недействительного translitName
+            Product product = _unitOfWork.Product.Get(x => x.TranslitName == name, includeProperties: "Characteristics,SubCategory,Tags");
+            product.SubCategory.Category = _unitOfWork.Category.Get(x => x.Id == product.SubCategory.CategoryId);
+            return View(product);
         }
     }
 }

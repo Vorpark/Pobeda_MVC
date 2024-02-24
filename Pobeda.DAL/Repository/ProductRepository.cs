@@ -1,4 +1,5 @@
-﻿using Pobeda.DAL.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Pobeda.DAL.Data;
 using Pobeda.DAL.Repository.IRepository;
 using Pobeda.Domain.Entity;
 
@@ -18,7 +19,7 @@ namespace Pobeda.DAL.Repository
         public IEnumerable<Product> GetPopularProducts()
         {
             //Реализация фильтра продвижения продукта
-            IQueryable<Product> query = dbSet.Take(12);
+            IQueryable<Product> query = dbSet.Take(12).Include(x => x.SubCategory).ThenInclude(y => y.Category);
             return query.ToList();
         }
     }
