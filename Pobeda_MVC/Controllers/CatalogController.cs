@@ -1,10 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Pobeda.DAL.Repository.IRepository;
+using Pobeda.Utility;
 
 namespace Pobeda_MVC.Controllers
 {
     [Route("catalog")]
     public class CatalogController : Controller
     {
+        private readonly IUnitOfWork _unitOfWork;
+        public CatalogController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
         [HttpGet]
         public IActionResult Index()
         {
@@ -13,13 +20,13 @@ namespace Pobeda_MVC.Controllers
 
         [HttpGet]
         [Route("{categoryName}")]
-        public IActionResult RedirectToCategory(string categoryName)
+        public IActionResult Category(string categoryName)
         {
             return View();
         }
         [HttpGet]
         [Route("{categoryName}/{subCategoryName}")]
-        public IActionResult RedirectToSubCategory(string categoryName, string subCategoryName)
+        public IActionResult SubCategory(string categoryName, string subCategoryName)
         {
             return View();
         }

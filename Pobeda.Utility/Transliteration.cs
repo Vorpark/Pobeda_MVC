@@ -66,7 +66,7 @@ namespace Pobeda.Utility
             gost.Add("Ж", "zh");
             gost.Add("З", "z");
             gost.Add("И", "i");
-            gost.Add("Й", "jj");
+            gost.Add("Й", "j");
             gost.Add("К", "k");
             gost.Add("Л", "l");
             gost.Add("М", "m");
@@ -99,7 +99,7 @@ namespace Pobeda.Utility
             gost.Add("ж", "zh");
             gost.Add("з", "z");
             gost.Add("и", "i");
-            gost.Add("й", "jj");
+            gost.Add("й", "j");
             gost.Add("к", "k");
             gost.Add("л", "l");
             gost.Add("м", "m");

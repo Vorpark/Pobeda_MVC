@@ -14,14 +14,11 @@ namespace Pobeda_MVC.Controllers
         }
 
         [HttpGet]
-        [Route("{id:int}")]
-        public IActionResult Index(int? id)
+        [Route("{name}")]
+        public IActionResult Index(string categoryName, string subCategoryName, string name)
         {
-            if (id == null)
-            {
-                //Отображение недействительного id
-            }
-            Product product = _unitOfWork.Product.Get(x => x.Id == id, includeProperties: "Characteristics,SubCategory,Tags");
+            //Отображение недействительного translitName
+            Product product = _unitOfWork.Product.Get(x => x.TranslitName == name, includeProperties: "Characteristics,SubCategory,Tags");
             product.SubCategory.Category = _unitOfWork.Category.Get(x => x.Id == product.SubCategory.CategoryId);
             return View(product);
         }

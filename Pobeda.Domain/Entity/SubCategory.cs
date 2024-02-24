@@ -14,6 +14,9 @@ namespace Pobeda.Domain.Entity
         [MaxLength(50, ErrorMessage = "Поле не может превышать 50 символов")]
         public string Name { get; set; }
 
+        [ValidateNever]
+        public string TranslitName { get; set; }
+
         [Required(ErrorMessage = "Нужно выбрать категорию")]
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]
