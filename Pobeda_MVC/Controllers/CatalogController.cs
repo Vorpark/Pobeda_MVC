@@ -27,17 +27,17 @@ namespace Pobeda_MVC.Controllers
 
         [HttpGet]
         [Route("{categoryName}/{subCategoryName}")]
-        public IActionResult SubCategory(string categoryName, string subCategoryName)
+        public IActionResult Category(string categoryName, string subCategoryName)
         {
             return View();
         }
 
         [HttpGet]
-        [Route("{categoryName}/{subCategoryName}/{name}")]
-        public IActionResult Product(string categoryName, string subCategoryName, string name)
+        [Route("{categoryName}/{subCategoryName}/{productName}")]
+        public IActionResult Product(string categoryName, string subCategoryName, string productName)
         {
-            //Отображение недействительного translitName
-            Product product = _unitOfWork.Product.Get(x => x.TranslitName == name, includeProperties: "Characteristics,SubCategory,Tags");
+            //Отображение недействительного маршрута
+            Product product = _unitOfWork.Product.Get(x => x.TranslitName == productName, includeProperties: "Characteristics,SubCategory,Tags");
             product.SubCategory.Category = _unitOfWork.Category.Get(x => x.Id == product.SubCategory.CategoryId);
             return View(product);
         }
