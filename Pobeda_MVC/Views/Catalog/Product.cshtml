@@ -8,25 +8,25 @@
     <section class="j-container">
         <div class="breadcrumbs">
             <span>
-                <a class="breadcrumbs-crumb breadcrumbs-crumb-previus" asp-controller="Main" asp-action="Index">
+                <a class="breadcrumbs-crumb breadcrumbs-crumb-previus" href="/">
                     <span>Главная</span>
                 </a>
             </span>
             <i class="ui-icon ui-icon-arrow-angleright"></i>
             <span>
-                <a class="breadcrumbs-crumb breadcrumbs-crumb-previus">
+                <a class="breadcrumbs-crumb breadcrumbs-crumb-previus" href="/catalog/">
                     <span>Каталог</span>
                 </a>
             </span>
             <i class="ui-icon ui-icon-arrow-angleright"></i>
             <span>
-                <a class="breadcrumbs-crumb breadcrumbs-crumb-previus">
+                <a class="breadcrumbs-crumb breadcrumbs-crumb-previus" href="/catalog/@Model.SubCategory.Category.TranslitName/">
                     <span>@Model.SubCategory.Category.Name</span>
                 </a>
             </span>
             <i class="ui-icon ui-icon-arrow-angleright"></i>
             <span>
-                <a>
+                <a class="breadcrumbs-crumb breadcrumbs-crumb-previus" href="/catalog/@Model.SubCategory.Category.TranslitName/@Model.SubCategory.TranslitName/">
                     <span>@Model.SubCategory.Name</span>
                 </a>
             </span>

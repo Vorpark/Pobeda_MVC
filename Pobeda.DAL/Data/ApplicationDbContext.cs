@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Pobeda.Domain.Entity;
 
 namespace Pobeda.DAL.Data
@@ -20,18 +19,18 @@ namespace Pobeda.DAL.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Category>().HasData(
-                new Category { Id = 1, Name = "Телефоны", TranslitName = "telefony" },
-                new Category { Id = 2, Name = "Компьютерная техника", TranslitName = "kompyuternaya-tehnika" },
-                new Category { Id = 3, Name = "Инструмент", TranslitName = "instrument" },
-                new Category { Id = 4, Name = "Игры и приставки", TranslitName = "igry-i-pristavki" },
-                new Category { Id = 5, Name = "Товары для дома", TranslitName = "tovary-dlya-doma" },
-                new Category { Id = 6, Name = "Авто", TranslitName = "avto" },
-                new Category { Id = 7, Name = "Фото и видеотехника", TranslitName = "foto-i-videotehnika" },
-                new Category { Id = 8, Name = "Хобби и отдых", TranslitName = "hobbi-i-otdyh" },
-                new Category { Id = 9, Name = "Личные вещи", TranslitName = "lichnye-vecshi" },
-                new Category { Id = 10, Name = "Аудиотехника", TranslitName = "audiotehnika" },
-                new Category { Id = 11, Name = "ТВ и видео", TranslitName = "tv-i-video" },
-                new Category { Id = 12, Name = "Товары для детей", TranslitName = "tovary-dlya-detei" }
+                new Category { Id = 1, Name = "Телефоны", TranslitName = "telefony", ImageUrl = @"\img\category\category-telefony.png" },
+                new Category { Id = 2, Name = "Компьютерная техника", TranslitName = "kompyuternaya-tehnika", ImageUrl = @"\img\category\category-kompyuternaya-tehnika.png" },
+                new Category { Id = 3, Name = "Инструмент", TranslitName = "instrument", ImageUrl = @"\img\category\category-instrument.png" },
+                new Category { Id = 4, Name = "Игры и приставки", TranslitName = "igry-i-pristavki", ImageUrl = @"\img\category\category-igry-i-pristavki.png" },
+                new Category { Id = 5, Name = "Товары для дома", TranslitName = "tovary-dlya-doma", ImageUrl = @"\img\category\category-tovary-dlya-doma.png" },
+                new Category { Id = 6, Name = "Авто", TranslitName = "avto", ImageUrl = @"\img\category\category-avto.png" },
+                new Category { Id = 7, Name = "Фото и видеотехника", TranslitName = "foto-i-videotehnika", ImageUrl = @"\img\category\category-foto-i-videotehnika.png" },
+                new Category { Id = 8, Name = "Хобби и отдых", TranslitName = "hobbi-i-otdyh", ImageUrl = @"\img\category\category-hobbi-i-otdyh.png" },
+                new Category { Id = 9, Name = "Личные вещи", TranslitName = "lichnye-vecshi", ImageUrl = @"\img\category\category-lichnye-vecshi.png" },
+                new Category { Id = 10, Name = "Аудиотехника", TranslitName = "audiotehnika", ImageUrl = @"\img\category\category-audiotehnika.png" },
+                new Category { Id = 11, Name = "ТВ и видео", TranslitName = "tv-i-video", ImageUrl = @"\img\category\category-tv-i-video.png" },
+                new Category { Id = 12, Name = "Товары для детей", TranslitName = "tovary-dlya-detei", ImageUrl = @"\img\category\category-tovary-dlya-detei.png" }
             );
 
             modelBuilder.Entity<SubCategory>().HasData( 

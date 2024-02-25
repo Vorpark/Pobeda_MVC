@@ -16,6 +16,10 @@ namespace Pobeda.Domain.Entity
         [ValidateNever]
         public string TranslitName { get; set; }
 
+        [Required(ErrorMessage = "Поле не может быть пустым")]
+        [Display(Name = "Изображение")]
+        public string ImageUrl { get; set; }
+
         public ICollection<SubCategory> SubCategories { get; set; }
     }
 }
