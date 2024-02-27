@@ -2,6 +2,7 @@
 using Pobeda.DAL.Data;
 using Pobeda.DAL.Repository.IRepository;
 using Pobeda.Domain.Entity;
+using System.Linq.Expressions;
 
 namespace Pobeda.DAL.Repository
 {
@@ -21,6 +22,11 @@ namespace Pobeda.DAL.Repository
             //Реализация фильтра продвижения продукта
             IQueryable<Product> query = dbSet.Take(12).Include(x => x.SubCategory).ThenInclude(y => y.Category);
             return query.ToList();
+        }
+        public IEnumerable<Product> GetAllFilter(Expression<Func<Product, bool>> filter)
+        {
+            IQueryable<Product> query = dbSet;
+            return query.Where(filter).Include(x => x.SubCategory).Include(x => x.Tags).ToList();
         }
     }
 }

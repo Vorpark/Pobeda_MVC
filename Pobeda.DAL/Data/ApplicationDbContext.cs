@@ -219,6 +219,7 @@ namespace Pobeda.DAL.Data
                 City = "Самара",
                 Description = "Состояние хорошее.",
                 ImageUrl = @"\products_image\product_photo_1.webp",
+                CategoryId = 2,
                 SubCategoryId = 8
             },
             new Product
@@ -230,6 +231,7 @@ namespace Pobeda.DAL.Data
                 City = "Саратов",
                 Description = "Состояние хорошее.",
                 ImageUrl = @"\products_image\product_photo_2.webp",
+                CategoryId = 1,
                 SubCategoryId = 1
             }
             );

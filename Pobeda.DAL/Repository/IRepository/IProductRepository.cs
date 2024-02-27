@@ -1,4 +1,5 @@
 ﻿using Pobeda.Domain.Entity;
+using System.Linq.Expressions;
 
 namespace Pobeda.DAL.Repository.IRepository
 {
@@ -6,5 +7,6 @@ namespace Pobeda.DAL.Repository.IRepository
     {
         void Update(Product product);
         public IEnumerable<Product> GetPopularProducts();
+        public IEnumerable<Product> GetAllFilter(Expression<Func<Product, bool>> filter);
     }
 }
