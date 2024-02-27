@@ -40,8 +40,19 @@ namespace Pobeda_MVC.Controllers
         [Route("{categoryName}/{subCategoryName}")]
         public IActionResult Category(string categoryName, string subCategoryName)
         {
-            //Отображение недействительного маршрута
-            return View();
+            var category = _unitOfWork.Category.Get(x => x.TranslitName == categoryName, includeProperties: "SubCategories");
+            var subCategory = category.SubCategories.Where(x => x.TranslitName == subCategoryName).First();
+            var products = _unitOfWork.Product.GetAllFilter(x => x.SubCategoryId == subCategory.Id);
+            var categoryVM = new CategoryVM
+            {
+                CategoryName = category.Name,
+                TranslitCategoryName = category.TranslitName,
+                SubCategoryName = subCategory.Name,
+                TranslitSubCategoryName = subCategory.TranslitName,
+                BannerImageUrl = category.ImageUrl,
+                Products = products
+            };
+            return View(categoryVM);
         }
 
         [HttpGet]
@@ -50,7 +61,7 @@ namespace Pobeda_MVC.Controllers
         {
             //Отображение недействительного маршрута
             Product product = _unitOfWork.Product.Get(x => x.TranslitName == productName, includeProperties: "Characteristics,SubCategory,Tags");
-            product.SubCategory.Category = _unitOfWork.Category.Get(x => x.Id == product.SubCategory.CategoryId);
+            product.SubCategory.Category = _unitOfWork.Category.Get(x => x.Id == product.CategoryId);
             return View(product);
         }
     }
