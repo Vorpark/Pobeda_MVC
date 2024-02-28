@@ -53,33 +53,38 @@
     <section class="j-container filter with-fast">
         <div class="filter-header">
             <div class="filter-header--title">
-                <h1>@if (Model.SubCategoryName != null) { @Model.SubCategoryName } else { @Model.CategoryName }</h1>
+                <h1>
+                    @if (Model.SubCategoryName != null)
+                    {
+                        @Model.SubCategoryName
+                    }
+                    else
+                    {
+                        @Model.CategoryName
+                    }
+                </h1>
                 <div class="filter-header--count">
                     Всего @Model.Products.Count()
                 </div>
             </div>
         </div>
 
-        <div class="filter-quick">
-            <div class="swiper-container filter-quick--container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">
-                <div class="swiper-wrapper filter-quick--wrapper" style="transform: translate3d(0px, 0px, 0px);">
-                    <div class="swiper-slide filter-quick--item swiper-slide-active">Iphone 15</div>
-                    <div class="swiper-slide filter-quick--item swiper-slide-next">Iphone 13</div>
-                    <div class="swiper-slide filter-quick--item">Samsung S22</div>
-                    <div class="swiper-slide filter-quick--item">Samsung S21</div>
-                    <div class="swiper-slide filter-quick--item">Наушники</div>
-                    <div class="swiper-slide filter-quick--item">Power bank</div>
-                    <div class="swiper-slide filter-quick--item">USB кабель</div>
-                    <div class="swiper-slide filter-quick--item">Apple watch</div>
-                    <div class="swiper-slide filter-quick--item">AirPods</div>
-                    <div class="swiper-slide filter-quick--item">Iphone 11</div>
-                    <div class="swiper-slide filter-quick--item">Iphone 14</div>
+        @if (Model.FilterItems != null)
+        {
+            <div class="filter-quick">
+                <div class="swiper-container filter-quick--container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">
+                    <div class="swiper-wrapper filter-quick--wrapper" style="transform: translate3d(0px, 0px, 0px);">
+                        @foreach (var filterItem in Model.FilterItems)
+                        {
+                            <div class="swiper-slide filter-quick--item" href="@filterItem.Item2">@filterItem.Item1</div>
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
+        }
 
-@*         <script>
-            window.cat = "telefony";
+      @*<script>
+        window.cat = "telefony";
         </script> *@
 
         <div class="filter-banner-top">
@@ -141,44 +146,47 @@
             </div>
         </div>
         <div class="filter-content">
-            <div class="filter-grid">
-                @foreach(var product in Model.Products)
-                {
-                    <div class="card is-lazy">
-                        <div class="card-wrapper">
-                            <div class="card-labels">
-                                <div class="card-label">@product.Tags?.First().Name</div>
-                            </div>
-                            <div class="card-images">
-                                <a class="card-images-wrapper" href="/catalog/@Model.TranslitCategoryName/@product.SubCategory.TranslitName/@product.TranslitName/" rel="noreferrer" title="@product.Name" target="_blank">
-                                    <div class="card-images-desktop is-active">
-                                        <div class="card-images-overlay"></div>
-                                        <div class="card-images-img">
-                                            <img alt="Купить @product.Name б/у в @product.City. Цена 15999 рублей" data-img-load="load" data-img-load-stack="1" width="197" itemprop="image" src="@product.ImageUrl">
+            @if (Model.Products != null)
+            {
+                <div class="filter-grid">
+                    @foreach (var product in Model.Products)
+                    {
+                        <div class="card is-lazy">
+                            <div class="card-wrapper">
+                                <div class="card-labels">
+                                    <div class="card-label">@product.Tags?.First().Name</div>
+                                </div>
+                                <div class="card-images">
+                                    <a class="card-images-wrapper" href="/catalog/@Model.TranslitCategoryName/@product.SubCategory.TranslitName/@product.TranslitName/" rel="noreferrer" title="@product.Name" target="_blank">
+                                        <div class="card-images-desktop is-active">
+                                            <div class="card-images-overlay"></div>
+                                            <div class="card-images-img">
+                                                <img alt="Купить @product.Name б/у в @product.City. Цена 15999 рублей" data-img-load="load" data-img-load-stack="1" width="197" itemprop="image" src="@product.ImageUrl">
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-prices">
+                                        <div class="card-price">
+                                            @product.Price.ToString("C0")
                                         </div>
                                     </div>
-                                </a>
-                            </div>
-                            <div class="card-content">
-                                <div class="card-prices">
-                                    <div class="card-price">
-                                        @product.Price.ToString("C0")
-                                    </div>
+                                    <a class="card-title" href="/catalog/@Model.TranslitCategoryName/@product.SubCategory.TranslitName/@product.TranslitName/" rel="noreferrer" title="Купить @product.Name б/у в @product.City. Цена 15999 рублей" target="_blank">
+                                        @product.Name
+                                    </a>
                                 </div>
-                                <a class="card-title" href="/catalog/@Model.TranslitCategoryName/@product.SubCategory.TranslitName/@product.TranslitName/" rel="noreferrer" title="Купить @product.Name б/у в @product.City. Цена 15999 рублей" target="_blank">
-                                    @product.Name
-                                </a>
-                            </div>
-                            <div class="card-bottom">
-                                <div class="card-city">@product.City</div>
-                                <a class="card-action-more" href="/catalog/@Model.TranslitCategoryName/@product.SubCategory.TranslitName/@product.TranslitName/" title="Купить @product.Name б/у в @product.City. Цена 15999 рублей" target="_blank">
-                                    Подробнее
-                                </a>
+                                <div class="card-bottom">
+                                    <div class="card-city">@product.City</div>
+                                    <a class="card-action-more" href="/catalog/@Model.TranslitCategoryName/@product.SubCategory.TranslitName/@product.TranslitName/" title="Купить @product.Name б/у в @product.City. Цена 15999 рублей" target="_blank">
+                                        Подробнее
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                }
-            </div>
+                    }
+                </div>
+            }
         </div>
     </section>
 </div>

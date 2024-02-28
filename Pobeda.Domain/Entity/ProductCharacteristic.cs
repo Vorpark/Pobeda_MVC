@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Pobeda.Domain.Entity
 {
@@ -17,7 +17,7 @@ namespace Pobeda.Domain.Entity
         [MaxLength(50, ErrorMessage = "Поле не может превышать 50 символов")]
         public string Value { get; set; }
 
+        [Required]
         public int ProductId { get; set; }
-        public Product Product { get; set; }
     }
 }

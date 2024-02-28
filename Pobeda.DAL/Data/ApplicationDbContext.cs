@@ -33,7 +33,7 @@ namespace Pobeda.DAL.Data
                 new Category { Id = 12, Name = "Товары для детей", TranslitName = "tovary-dlya-detei", ImageUrl = @"\img\category\category-tovary-dlya-detei.png" }
             );
 
-            modelBuilder.Entity<SubCategory>().HasData( 
+            modelBuilder.Entity<SubCategory>().HasData(
                 new SubCategory { Id = 1, Name = "Сотовые телефоны", TranslitName = "sotovye-telefony", CategoryId = 1 },
                 new SubCategory { Id = 2, Name = "Умные часы и браслеты", TranslitName = "umnye-chasy-i-braslety", CategoryId = 1 },
                 new SubCategory { Id = 3, Name = "Наушники для телефонов", TranslitName = "naushniki-dlya-telefonov", CategoryId = 1 },
@@ -140,7 +140,7 @@ namespace Pobeda.DAL.Data
             );
 
             modelBuilder.Entity<ProductTag>().HasData(
-                new ProductTag { Id = 1, Name = "В кредит"},
+                new ProductTag { Id = 1, Name = "В кредит" },
                 new ProductTag { Id = 2, Name = "Состояние новый" },
                 new ProductTag { Id = 3, Name = "Состояние хорошее" },
                 new ProductTag { Id = 4, Name = "Состояние отличное" },

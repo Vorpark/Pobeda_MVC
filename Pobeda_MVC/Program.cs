@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Pobeda.DAL.Data;
-using Pobeda.DAL.Repository.IRepository;
 using Pobeda.DAL.Repository;
+using Pobeda.DAL.Repository.IRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 

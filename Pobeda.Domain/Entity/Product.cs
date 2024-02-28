@@ -45,7 +45,7 @@ namespace Pobeda.Domain.Entity
         public SubCategory SubCategory { get; set; }
 
 
-        public ICollection<ProductCharacteristic> Characteristics {  get; set; }
+        public ICollection<ProductCharacteristic> Characteristics { get; set; }
         public ICollection<ProductTag> Tags { get; set; }
     }
 }

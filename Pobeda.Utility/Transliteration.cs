@@ -24,7 +24,7 @@ namespace Pobeda.Utility
             output = output.Trim();
             Dictionary<string, string> tdict = GetDictionaryByType(type);
             foreach (KeyValuePair<string, string> key in tdict)
-            { 
+            {
                 output = output.Replace(key.Key, key.Value);
             }
             return output;

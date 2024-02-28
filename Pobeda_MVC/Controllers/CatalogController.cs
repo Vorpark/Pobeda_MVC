@@ -48,7 +48,6 @@ namespace Pobeda_MVC.Controllers
                 CategoryName = category.Name,
                 TranslitCategoryName = category.TranslitName,
                 SubCategoryName = subCategory.Name,
-                TranslitSubCategoryName = subCategory.TranslitName,
                 BannerImageUrl = category.ImageUrl,
                 Products = products
             };

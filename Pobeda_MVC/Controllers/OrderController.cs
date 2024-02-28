@@ -2,6 +2,7 @@
 
 namespace Pobeda_MVC.Controllers
 {
+    [Route("order")]
     public class OrderController : Controller
     {
         [HttpGet]
