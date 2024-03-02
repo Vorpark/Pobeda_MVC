@@ -76,7 +76,7 @@
                     <div class="swiper-wrapper filter-quick--wrapper" style="transform: translate3d(0px, 0px, 0px);">
                         @foreach (var filterItem in Model.FilterItems)
                         {
-                            <div class="swiper-slide filter-quick--item" href="@filterItem.Item2">@filterItem.Item1</div>
+                            <a class="swiper-slide filter-quick--item" href="@filterItem.Href">@filterItem.Name</a>
                         }
                     </div>
                 </div>

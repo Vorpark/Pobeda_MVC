@@ -8,7 +8,7 @@ namespace Pobeda.Domain.Entity
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Поле не может быть пустым")]
-        [DisplayName("Название фильтра")]
+        [DisplayName("Название тега")]
         [MaxLength(30, ErrorMessage = "Поле не может превышать 30 символов")]
         public string Name { get; set; }
 

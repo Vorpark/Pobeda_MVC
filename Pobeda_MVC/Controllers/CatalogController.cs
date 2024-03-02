@@ -24,13 +24,14 @@ namespace Pobeda_MVC.Controllers
         public IActionResult Category(string categoryName)
         {
             //Отображение недействительного маршрута
-            var category = _unitOfWork.Category.Get(x => x.TranslitName == categoryName, includeProperties: "SubCategories");
+            var category = _unitOfWork.Category.Get(x => x.TranslitName == categoryName, includeProperties: "SubCategories,CategoryTags");
             var products = _unitOfWork.Product.GetAllFilter(x => x.CategoryId == category.Id);
             var categoryVM = new CategoryVM
             {
                 CategoryName = category.Name,
                 TranslitCategoryName = category.TranslitName,
                 BannerImageUrl = category.ImageUrl,
+                FilterItems = category.CategoryTags,
                 Products = products
             };
             return View(categoryVM);
@@ -40,7 +41,7 @@ namespace Pobeda_MVC.Controllers
         [Route("{categoryName}/{subCategoryName}")]
         public IActionResult Category(string categoryName, string subCategoryName)
         {
-            var category = _unitOfWork.Category.Get(x => x.TranslitName == categoryName, includeProperties: "SubCategories");
+            var category = _unitOfWork.Category.Get(x => x.TranslitName == categoryName, includeProperties: "SubCategories,CategoryTags");
             var subCategory = category.SubCategories.Where(x => x.TranslitName == subCategoryName).First();
             var products = _unitOfWork.Product.GetAllFilter(x => x.SubCategoryId == subCategory.Id);
             var categoryVM = new CategoryVM
@@ -49,6 +50,7 @@ namespace Pobeda_MVC.Controllers
                 TranslitCategoryName = category.TranslitName,
                 SubCategoryName = subCategory.Name,
                 BannerImageUrl = category.ImageUrl,
+                FilterItems = category.CategoryTags,
                 Products = products
             };
             return View(categoryVM);

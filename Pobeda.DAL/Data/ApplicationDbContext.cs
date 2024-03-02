@@ -7,6 +7,7 @@ namespace Pobeda.DAL.Data
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<CategoryTag> CategoryTags { get; set; }
         public DbSet<ProductCharacteristic> ProductCharacteristics { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<ProductTag> ProductTags { get; set; }
@@ -137,6 +138,105 @@ namespace Pobeda.DAL.Data
 
                 new SubCategory { Id = 91, Name = "Детские автокресла", TranslitName = "detskie-avtokresla", CategoryId = 12 },
                 new SubCategory { Id = 92, Name = "Детские игрушки", TranslitName = "detskie-igrushki", CategoryId = 12 }
+            );
+
+            modelBuilder.Entity<CategoryTag>().HasData(
+                new CategoryTag { Id = 1, CategoryId = 1, Name = "Iphone 15", Href = "#" },
+                new CategoryTag { Id = 2, CategoryId = 1, Name = "Iphone 13", Href = "#" },
+                new CategoryTag { Id = 3, CategoryId = 1, Name = "Samsung S22", Href = "#" },
+                new CategoryTag { Id = 4, CategoryId = 1, Name = "Samsung S21", Href = "#" },
+                new CategoryTag { Id = 5, CategoryId = 1, Name = "Наушники", Href = "/catalog/telefony/naushniki-dlya-telefonov/" },
+                new CategoryTag { Id = 6, CategoryId = 1, Name = "Power bank", Href = "#" },
+                new CategoryTag { Id = 7, CategoryId = 1, Name = "USB кабель", Href = "#" },
+                new CategoryTag { Id = 8, CategoryId = 1, Name = "Apple watch", Href = "#" },
+                new CategoryTag { Id = 9, CategoryId = 1, Name = "AirPods", Href = "#" },
+                new CategoryTag { Id = 10, CategoryId = 1, Name = "Iphone 11", Href = "#" },
+                new CategoryTag { Id = 11, CategoryId = 1, Name = "Iphone 14", Href = "#" },
+
+                new CategoryTag { Id = 12, CategoryId = 2, Name = "Macbook", Href = "#" },
+                new CategoryTag { Id = 13, CategoryId = 2, Name = "Acer", Href = "#" },
+                new CategoryTag { Id = 14, CategoryId = 2, Name = "Dell", Href = "#" },
+                new CategoryTag { Id = 15, CategoryId = 2, Name = "HP", Href = "#" },
+                new CategoryTag { Id = 16, CategoryId = 2, Name = "Клавиатуры", Href = "catalog/kompyuternaya-tehnika/klaviatury/" },
+                new CategoryTag { Id = 17, CategoryId = 2, Name = "Жесткий Диск", Href = "catalog/kompyuternaya-tehnika/jestkie-diski/" },
+                new CategoryTag { Id = 18, CategoryId = 2, Name = "Принтер", Href = "catalog/kompyuternaya-tehnika/printery-i-mfu/" },
+
+                new CategoryTag { Id = 19, CategoryId = 3, Name = "УШМ", Href = "#" },
+                new CategoryTag { Id = 20, CategoryId = 3, Name = "Дрель", Href = "#" },
+                new CategoryTag { Id = 21, CategoryId = 3, Name = "Шуруповерт", Href = "#" },
+                new CategoryTag { Id = 22, CategoryId = 3, Name = "Пила", Href = "#" },
+                new CategoryTag { Id = 23, CategoryId = 3, Name = "Нивелир", Href = "#" },
+                new CategoryTag { Id = 24, CategoryId = 3, Name = "Сварочник", Href = "#" },
+                new CategoryTag { Id = 25, CategoryId = 3, Name = "Фрезер", Href = "#" },
+                new CategoryTag { Id = 26, CategoryId = 3, Name = "Лобзик", Href = "#" },
+                new CategoryTag { Id = 27, CategoryId = 3, Name = "Набор инструментов", Href = "#" },
+
+                new CategoryTag { Id = 28, CategoryId = 4, Name = "PS1", Href = "#" },
+                new CategoryTag { Id = 29, CategoryId = 4, Name = "PS2", Href = "#" },
+                new CategoryTag { Id = 30, CategoryId = 4, Name = "PS3", Href = "#" },
+                new CategoryTag { Id = 31, CategoryId = 4, Name = "PS4", Href = "#" },
+                new CategoryTag { Id = 32, CategoryId = 4, Name = "PS5", Href = "#" },
+                new CategoryTag { Id = 33, CategoryId = 4, Name = "Джойстик", Href = "#" },
+
+                new CategoryTag { Id = 34, CategoryId = 5, Name = "Робот пылесос", Href = "#" },
+                new CategoryTag { Id = 35, CategoryId = 5, Name = "Отпариватель", Href = "#" },
+                new CategoryTag { Id = 36, CategoryId = 5, Name = "Обогреватель", Href = "#" },
+                new CategoryTag { Id = 37, CategoryId = 5, Name = "Электроплита", Href = "#" },
+                new CategoryTag { Id = 38, CategoryId = 5, Name = "Мясорубка", Href = "#" },
+                new CategoryTag { Id = 39, CategoryId = 5, Name = "Кофемолка", Href = "#" },
+                new CategoryTag { Id = 40, CategoryId = 5, Name = "Соковыжималка", Href = "#" },
+
+                new CategoryTag { Id = 41, CategoryId = 6, Name = "Сабвуфер", Href = "#" },
+                new CategoryTag { Id = 42, CategoryId = 6, Name = "Аптечка", Href = "#" },
+                new CategoryTag { Id = 43, CategoryId = 6, Name = "Домкрат", Href = "#" },
+                new CategoryTag { Id = 44, CategoryId = 6, Name = "Антирадар", Href = "catalog/avto/radardetektory/" },
+                new CategoryTag { Id = 45, CategoryId = 6, Name = "Компрессор", Href = "#" },
+                new CategoryTag { Id = 46, CategoryId = 6, Name = "Набор автомобилиста", Href = "#" },
+                new CategoryTag { Id = 47, CategoryId = 6, Name = "Сигнализация", Href = "#" },
+
+                new CategoryTag { Id = 48, CategoryId = 7, Name = "Штатив", Href = "#" },
+                new CategoryTag { Id = 49, CategoryId = 7, Name = "Вспышка", Href = "#" },
+                new CategoryTag { Id = 50, CategoryId = 7, Name = "Объектив", Href = "#" },
+
+                new CategoryTag { Id = 51, CategoryId = 8, Name = "Удочки", Href = "#" },
+                new CategoryTag { Id = 52, CategoryId = 8, Name = "Велосипед", Href = "#" },
+                new CategoryTag { Id = 53, CategoryId = 8, Name = "Гантели", Href = "#" },
+                new CategoryTag { Id = 54, CategoryId = 8, Name = "Бинокль", Href = "#" },
+                new CategoryTag { Id = 55, CategoryId = 8, Name = "Боксерские перчатки", Href = "#" },
+                new CategoryTag { Id = 56, CategoryId = 8, Name = "Шлемы", Href = "#" },
+                new CategoryTag { Id = 57, CategoryId = 8, Name = "Для сноуборда", Href = "#" },
+
+                new CategoryTag { Id = 58, CategoryId = 9, Name = "Tissot", Href = "#" },
+                new CategoryTag { Id = 59, CategoryId = 9, Name = "Куртка", Href = "#" },
+                new CategoryTag { Id = 60, CategoryId = 9, Name = "Джинсы", Href = "#" },
+                new CategoryTag { Id = 61, CategoryId = 9, Name = "Кроссовки", Href = "#" },
+                new CategoryTag { Id = 62, CategoryId = 9, Name = "Сувениры", Href = "#" },
+                new CategoryTag { Id = 63, CategoryId = 9, Name = "Шуба", Href = "#" },
+                new CategoryTag { Id = 64, CategoryId = 9, Name = "Коллекционные фигурки", Href = "#" },
+                new CategoryTag { Id = 65, CategoryId = 9, Name = "Футболки", Href = "#" },
+                new CategoryTag { Id = 66, CategoryId = 9, Name = "Casio", Href = "#" },
+
+                new CategoryTag { Id = 67, CategoryId = 10, Name = "Колонка JBL", Href = "#" },
+                new CategoryTag { Id = 68, CategoryId = 10, Name = "Ресивер", Href = "#" },
+                new CategoryTag { Id = 69, CategoryId = 10, Name = "Микрофон", Href = "#" },
+                new CategoryTag { Id = 70, CategoryId = 10, Name = "Музыкальный центр", Href = "catalog/audiotehnika/muzykalnye-centry/" },
+                new CategoryTag { Id = 71, CategoryId = 10, Name = "Яндекс станция", Href = "#" },
+                new CategoryTag { Id = 72, CategoryId = 10, Name = "Синтезатор", Href = "#" },
+                new CategoryTag { Id = 73, CategoryId = 10, Name = "Домашний кинотеатр", Href = "catalog/audiotehnika/domashnie-kinoteatry/" },
+
+                new CategoryTag { Id = 74, CategoryId = 11, Name = "Тв Samsung", Href = "#" },
+                new CategoryTag { Id = 75, CategoryId = 11, Name = "Тв Dexp", Href = "#" },
+                new CategoryTag { Id = 76, CategoryId = 11, Name = "Тв LG", Href = "#" },
+                new CategoryTag { Id = 77, CategoryId = 11, Name = "Кронштейн для ТВ", Href = "#" },
+                new CategoryTag { Id = 78, CategoryId = 11, Name = "Тв приставки", Href = "#" },
+                new CategoryTag { Id = 79, CategoryId = 11, Name = "Проекторы", Href = "#" },
+                new CategoryTag { Id = 80, CategoryId = 11, Name = "Провод HDMI", Href = "#" },
+
+                new CategoryTag { Id = 81, CategoryId = 12, Name = "Автокресла", Href = "catalog/tovary-dlya-detei/detskie-avtokresla/" },
+                new CategoryTag { Id = 82, CategoryId = 12, Name = "Самокат детский", Href = "#" },
+                new CategoryTag { Id = 83, CategoryId = 12, Name = "Велосипед детский", Href = "#" },
+                new CategoryTag { Id = 84, CategoryId = 12, Name = "Коляски", Href = "#" },
+                new CategoryTag { Id = 85, CategoryId = 12, Name = "Конструкторы", Href = "#" }
             );
 
             modelBuilder.Entity<ProductTag>().HasData(
