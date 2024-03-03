@@ -93,58 +93,45 @@
                 <img src="" lazy-load="loaded">
             </picture>
         </div>
+
         <div class="filter-desktop">
-            <div class="filter-components" data-mount="">
-                <div style="order: 4; transition: none 0s ease 0s;" class="filter-component" data-name="Состояние" data-type="multiple" data-render="" data-mount="">
-                    <div class="filter-component--title" data-toggle="">
-                        <span>Состояние</span>
-                        <i class="ui-icon-arrow-angletop"></i>
-                    </div>
-                    <div class="filter-component--wrapper ">
-                        <div class="j-checkbox" data-name="Новый" title="Новый">
-                            <input class="j-checkbox-input" data-id="1" type="checkbox">
-                            <div class="j-checkbox-wrapper">
-
-                                <div class="j-checkbox-icon"></div>
-                                <div class="j-checkbox-label ">Новый</div>
-                            </div>
+            <form asp-controller="Catalog" asp-action="Category" method="post">
+                <div class="filter-components" data-mount="">
+                    <div style="order: 4; transition: none 0s ease 0s;" class="filter-component" data-name="Состояние" data-type="multiple" data-render="" data-mount="">
+                        <div class="filter-component--title" data-toggle="">
+                            <span>Состояние</span>
+                            <i class="ui-icon-arrow-angletop"></i>
                         </div>
-                        <div class="j-checkbox" data-name="Отличное" title="Отличное">
-                            <input class="j-checkbox-input" data-id="2" type="checkbox">
-                            <div class="j-checkbox-wrapper">
-
-                                <div class="j-checkbox-icon"></div>
-                                <div class="j-checkbox-label ">Отличное</div>
-                            </div>
-                        </div>
-                        <div class="j-checkbox" data-name="Хорошее" title="Хорошее">
-                            <input class="j-checkbox-input" data-id="3" type="checkbox">
-                            <div class="j-checkbox-wrapper">
-
-                                <div class="j-checkbox-icon"></div>
-                                <div class="j-checkbox-label ">Хорошее</div>
-                            </div>
-                        </div>
-                        <div class="j-checkbox" data-name="Удовлетворительное" title="Удовлетворительное">
-                            <input class="j-checkbox-input" data-id="4" type="checkbox">
-                            <div class="j-checkbox-wrapper">
-
-                                <div class="j-checkbox-icon"></div>
-                                <div class="j-checkbox-label ">Удовлетворительное</div>
-                            </div>
+                        <div class="filter-component--wrapper">
+                            @foreach (var checkbox in Model.CheckBoxes)
+                            {
+                                <div class="j-checkbox" title="@checkbox.Description">
+                                    <input class="j-checkbox-input"
+                                           type="checkbox"
+                                           value="@checkbox.Value"
+                                           name="State"
+                                           id="checkbox_@checkbox.Value"
+                                           checked="@checkbox.IsChecked">
+                                    <div class="j-checkbox-wrapper">
+                                        <div class="j-checkbox-icon"></div>
+                                        <div class="j-checkbox-label" for="checkbox_@checkbox.Value">@checkbox.Description</div>
+                                    </div>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="filter-actions">
-                <button class="filter-action filter-action--apply j-button main">
-                    Применить фильтры
-                </button>
-                <button class="filter-action filter-action--reset">
-                    Сбросить фильтры
-                </button>
-            </div>
+                <div class="filter-actions">
+                    <button class="filter-action filter-action--apply j-button main" type="submit">
+                        Применить фильтры
+                    </button>
+                    @* <button class="filter-action filter-action--reset" type="submit">
+                        Сбросить фильтры
+                    </button> *@
+                </div>
+            </form>
         </div>
+
         <div class="filter-content">
             @if (Model.Products != null)
             {

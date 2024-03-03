@@ -2,6 +2,8 @@
 using Pobeda.DAL.Repository.IRepository;
 using Pobeda.Domain.Entity;
 using Pobeda.Domain.ViewModels;
+using Pobeda.Domain.Options;
+using System.Drawing.Design;
 
 namespace Pobeda_MVC.Controllers
 {
@@ -9,9 +11,37 @@ namespace Pobeda_MVC.Controllers
     public class CatalogController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ICollection<CategoryCheckBoxOption> _categoryCheckBox;
         public CatalogController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
+            _categoryCheckBox = new List<CategoryCheckBoxOption>()
+            {
+                new CategoryCheckBoxOption()
+                {
+                    IsChecked = false,
+                    Value = "Состояние новый",
+                    Description = "Новый"
+                },
+                new CategoryCheckBoxOption()
+                {
+                    IsChecked = false,
+                    Value = "Состояние отличное",
+                    Description = "Отличное"
+                },
+                new CategoryCheckBoxOption()
+                {
+                    IsChecked = false,
+                    Value = "Состояние хорошее",
+                    Description = "Хорошее"
+                },
+                new CategoryCheckBoxOption()
+                {
+                    IsChecked = false,
+                    Value = "Состояние удовлетворительное",
+                    Description = "Удовлетворительное"
+                }
+            };
         }
         [HttpGet]
         public IActionResult Index()
@@ -21,29 +51,53 @@ namespace Pobeda_MVC.Controllers
 
         [HttpGet]
         [Route("{categoryName}")]
-        public IActionResult Category(string categoryName)
+        public IActionResult Category(string categoryName, ICollection<string>? state)
         {
-            //Отображение недействительного маршрута
             var category = _unitOfWork.Category.Get(x => x.TranslitName == categoryName, includeProperties: "SubCategories,CategoryTags");
-            var products = _unitOfWork.Product.GetAllFilter(x => x.CategoryId == category.Id);
+            List<Product> products = new();
+            if(state?.Count() == 0 || state == null)
+            {
+                products = _unitOfWork.Product.GetAllFilter(x => x.CategoryId == category.Id).ToList();
+            }
+            else
+            {
+                foreach (var tag in state)
+                {
+                    var filteredProducts = _unitOfWork.Product.GetAllFilter(x => x.Tags.Contains(new ProductTag { Name = tag }));
+                    products.AddRange(filteredProducts);
+                }
+            }
             var categoryVM = new CategoryVM
             {
                 CategoryName = category.Name,
                 TranslitCategoryName = category.TranslitName,
                 BannerImageUrl = category.ImageUrl,
                 FilterItems = category.CategoryTags,
-                Products = products
+                Products = products,
+                CheckBoxes = _categoryCheckBox
             };
             return View(categoryVM);
         }
 
         [HttpGet]
         [Route("{categoryName}/{subCategoryName}")]
-        public IActionResult Category(string categoryName, string subCategoryName)
+        public IActionResult Category(string categoryName, string subCategoryName, ICollection<string>? state)
         {
             var category = _unitOfWork.Category.Get(x => x.TranslitName == categoryName, includeProperties: "SubCategories,CategoryTags");
             var subCategory = category.SubCategories.Where(x => x.TranslitName == subCategoryName).First();
-            var products = _unitOfWork.Product.GetAllFilter(x => x.SubCategoryId == subCategory.Id);
+            List<Product> products = new();
+            if (state?.Count() == 0 || state == null)
+            {
+                products = _unitOfWork.Product.GetAllFilter(x => x.CategoryId == subCategory.Id).ToList();
+            }
+            else
+            {
+                foreach (var tag in state)
+                {
+                    var filteredProducts = _unitOfWork.Product.GetAllFilter(x => x.Tags.Contains(new ProductTag { Name = tag })).Where(y => y.SubCategoryId == subCategory.Id);
+                    products.AddRange(filteredProducts);
+                }
+            }
             var categoryVM = new CategoryVM
             {
                 CategoryName = category.Name,
@@ -51,9 +105,18 @@ namespace Pobeda_MVC.Controllers
                 SubCategoryName = subCategory.Name,
                 BannerImageUrl = category.ImageUrl,
                 FilterItems = category.CategoryTags,
-                Products = products
+                Products = products,
+                CheckBoxes = _categoryCheckBox
             };
             return View(categoryVM);
+        }
+
+        [HttpPost]
+        [Route("{categoryName}/{subCategoryName?}")]
+        public IActionResult Category(CategoryVM categoryVM)
+        {
+            //Переделать categoryVm.State, не доходит до метода
+            return RedirectToAction("Category", "Catalog", categoryVM.State);
         }
 
         [HttpGet]
