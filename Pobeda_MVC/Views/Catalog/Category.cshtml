@@ -111,11 +111,8 @@
                                            value="@checkbox.Value"
                                            name="State"
                                            id="checkbox_@checkbox.Value"
-                                           checked="@checkbox.IsChecked">
-                                    <div class="j-checkbox-wrapper">
-                                        <div class="j-checkbox-icon"></div>
-                                        <div class="j-checkbox-label" for="checkbox_@checkbox.Value">@checkbox.Description</div>
-                                    </div>
+                                           checked="@checkbox.IsChecked" />
+                                        <div class="j-checkbox-label j-checkbox-wrapper" for="checkbox_@checkbox.Value">@checkbox.Description</div>
                                 </div>
                             }
                         </div>

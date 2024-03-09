@@ -43,6 +43,7 @@ namespace Pobeda_MVC.Controllers
                 }
             };
         }
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -63,7 +64,8 @@ namespace Pobeda_MVC.Controllers
             {
                 foreach (var tag in state)
                 {
-                    var filteredProducts = _unitOfWork.Product.GetAllFilter(x => x.Tags.Contains(new ProductTag { Name = tag }));
+                    var currentTag = _unitOfWork.ProductTag.Get(x => x.Name == tag);
+                    var filteredProducts = _unitOfWork.Product.GetAllFilter(x => x.Tags.Contains(currentTag)).Where(y => y.SubCategoryId == category.Id);
                     products.AddRange(filteredProducts);
                 }
             }
@@ -74,7 +76,8 @@ namespace Pobeda_MVC.Controllers
                 BannerImageUrl = category.ImageUrl,
                 FilterItems = category.CategoryTags,
                 Products = products,
-                CheckBoxes = _categoryCheckBox
+                CheckBoxes = _categoryCheckBox,
+                State = state
             };
             return View(categoryVM);
         }
@@ -94,7 +97,8 @@ namespace Pobeda_MVC.Controllers
             {
                 foreach (var tag in state)
                 {
-                    var filteredProducts = _unitOfWork.Product.GetAllFilter(x => x.Tags.Contains(new ProductTag { Name = tag })).Where(y => y.SubCategoryId == subCategory.Id);
+                    var currentTag = _unitOfWork.ProductTag.Get(x => x.Name == tag);
+                    var filteredProducts = _unitOfWork.Product.GetAllFilter(x => x.Tags.Contains(currentTag)).Where(y => y.SubCategoryId == subCategory.Id);
                     products.AddRange(filteredProducts);
                 }
             }
@@ -106,7 +110,8 @@ namespace Pobeda_MVC.Controllers
                 BannerImageUrl = category.ImageUrl,
                 FilterItems = category.CategoryTags,
                 Products = products,
-                CheckBoxes = _categoryCheckBox
+                CheckBoxes = _categoryCheckBox,
+                State = state
             };
             return View(categoryVM);
         }
@@ -115,8 +120,7 @@ namespace Pobeda_MVC.Controllers
         [Route("{categoryName}/{subCategoryName?}")]
         public IActionResult Category(CategoryVM categoryVM)
         {
-            //Переделать categoryVm.State, не доходит до метода
-            return RedirectToAction("Category", "Catalog", categoryVM.State);
+            return RedirectToAction("Category", "Catalog", new { state = categoryVM.State});
         }
 
         [HttpGet]
