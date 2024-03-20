@@ -65,7 +65,7 @@ namespace Pobeda_MVC.Controllers
                 foreach (var tag in state)
                 {
                     var currentTag = _unitOfWork.ProductTag.Get(x => x.Name == tag);
-                    var filteredProducts = _unitOfWork.Product.GetAllFilter(x => x.Tags.Contains(currentTag)).Where(y => y.SubCategoryId == category.Id);
+                    var filteredProducts = _unitOfWork.Product.GetAllFilter(x => x.Tags.Contains(currentTag)).Where(y => y.CategoryId == category.Id);
                     products.AddRange(filteredProducts);
                 }
             }
@@ -91,7 +91,7 @@ namespace Pobeda_MVC.Controllers
             List<Product> products = new();
             if (state?.Count() == 0 || state == null)
             {
-                products = _unitOfWork.Product.GetAllFilter(x => x.CategoryId == subCategory.Id).ToList();
+                products = _unitOfWork.Product.GetAllFilter(x => x.SubCategoryId == subCategory.Id).ToList();
             }
             else
             {
