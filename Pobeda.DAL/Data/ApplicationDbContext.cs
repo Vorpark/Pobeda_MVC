@@ -306,6 +306,64 @@ namespace Pobeda.DAL.Data
                 Key = "Количество ядер процессора",
                 Value = "2",
                 ProductId = 2
+            },
+
+            new ProductCharacteristic
+            {
+                Id = 9,
+                Key = "Диагональ",
+                Value = "6.1 дюйм.",
+                ProductId = 3
+            },
+            new ProductCharacteristic
+            {
+                Id = 10,
+                Key = "Объем встроенной памяти",
+                Value = "64 ГБ",
+                ProductId = 3
+            },
+            new ProductCharacteristic
+            {
+                Id = 11,
+                Key = "Объем оперативной памяти",
+                Value = "4 ГБ",
+                ProductId = 3
+            },
+            new ProductCharacteristic
+            {
+                Id = 12,
+                Key = "Количество ядер процессора",
+                Value = "6",
+                ProductId = 3
+            },
+
+            new ProductCharacteristic
+            {
+                Id = 13,
+                Key = "Диагональ",
+                Value = "6.1 дюйм.",
+                ProductId = 4
+            },
+            new ProductCharacteristic
+            {
+                Id = 14,
+                Key = "Объем встроенной памяти",
+                Value = "128 ГБ",
+                ProductId = 4
+            },
+            new ProductCharacteristic
+            {
+                Id = 15,
+                Key = "Объем оперативной памяти",
+                Value = "4 ГБ",
+                ProductId = 4
+            },
+            new ProductCharacteristic
+            {
+                Id = 16,
+                Key = "Количество ядер процессора",
+                Value = "6",
+                ProductId = 4
             }
             );
 
@@ -333,6 +391,30 @@ namespace Pobeda.DAL.Data
                 ImageUrl = @"\products_image\product_photo_2.webp",
                 CategoryId = 1,
                 SubCategoryId = 1
+            },
+            new Product
+            {
+                Id = 3,
+                Name = "Apple iPhone 11 64GB",
+                TranslitName = "apple-iphone-11-64gb",
+                Price = 29900,
+                City = "Самара",
+                Description = "Состояние отличное.",
+                ImageUrl = @"\products_image\product_photo_3.webp",
+                CategoryId = 1,
+                SubCategoryId = 1
+            },
+            new Product
+            {
+                Id = 4,
+                Name = "Apple iPhone 12 128GB",
+                TranslitName = "apple-iphone-12-128gb",
+                Price = 49900,
+                City = "Саратов",
+                Description = "Состояние новый.",
+                ImageUrl = @"\products_image\product_photo_4.webp",
+                CategoryId = 1,
+                SubCategoryId = 1
             }
             );
 
@@ -349,7 +431,9 @@ namespace Pobeda.DAL.Data
                         je.HasData(
                             new { ProductsId = 1, TagsId = 3 },
                             new { ProductsId = 2, TagsId = 1 },
-                            new { ProductsId = 2, TagsId = 3 });
+                            new { ProductsId = 2, TagsId = 3 },
+                            new { ProductsId = 3, TagsId = 4},
+                            new { ProductsId = 4, TagsId = 2});
                     });
         }
     }

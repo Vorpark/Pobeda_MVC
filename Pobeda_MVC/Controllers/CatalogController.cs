@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Pobeda.DAL.Repository.IRepository;
 using Pobeda.Domain.Entity;
-using Pobeda.Domain.ViewModels;
 using Pobeda.Domain.Options;
-using System.Drawing.Design;
+using Pobeda.Domain.ViewModels;
 
 namespace Pobeda_MVC.Controllers
 {
