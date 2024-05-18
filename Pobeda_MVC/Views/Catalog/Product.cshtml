@@ -1,7 +1,7 @@
-﻿@model Product
+﻿@model ProductVM
 
 <head>
-    <title>Купить @Model.Name в @Model.City | Победа</title>
+    <title>Купить @Model.Product.Name в @Model.Product.City | Победа</title>
     <link rel="stylesheet" href="~/css/product.css" />
 </head>
 <div class="main-wrapper product-page">
@@ -20,29 +20,29 @@
             </span>
             <i class="ui-icon ui-icon-arrow-angleright"></i>
             <span>
-                <a class="breadcrumbs-crumb breadcrumbs-crumb-previus" href="/catalog/@Model.SubCategory.Category.TranslitName/">
-                    <span>@Model.SubCategory.Category.Name</span>
+                <a class="breadcrumbs-crumb breadcrumbs-crumb-previus" href="/catalog/@Model.Product.SubCategory.Category.TranslitName/">
+                    <span>@Model.Product.SubCategory.Category.Name</span>
                 </a>
             </span>
             <i class="ui-icon ui-icon-arrow-angleright"></i>
             <span>
-                <a class="breadcrumbs-crumb breadcrumbs-crumb-previus" href="/catalog/@Model.SubCategory.Category.TranslitName/@Model.SubCategory.TranslitName/">
-                    <span>@Model.SubCategory.Name</span>
+                <a class="breadcrumbs-crumb breadcrumbs-crumb-previus" href="/catalog/@Model.Product.SubCategory.Category.TranslitName/@Model.Product.SubCategory.TranslitName/">
+                    <span>@Model.Product.SubCategory.Name</span>
                 </a>
             </span>
             <i class="ui-icon ui-icon-arrow-angleright"></i>
             <span class="breadcrumbs-crumb breadcrumbs-crumb-current">
                 <span>
-                    <span>@Model.Name</span>
+                    <span>@Model.Product.Name</span>
                 </span>
             </span>
         </div>
     </section>
     <div class="p-header">
         <div class="j-container">
-            <h1 class="p-header--title">@Model.Name</h1>
+            <h1 class="p-header--title">@Model.Product.Name</h1>
             <div class="p-header--labels">
-                @foreach (var tag in Model.Tags)
+                @foreach (var tag in Model.Product.Tags)
                 {
                     <div class="p-header--label">@tag.Name</div>
                 }
@@ -53,17 +53,16 @@
         <div class="j-container">
             <div class="p-container">
                 <div class="p-image">
-                    <img src=@Model.ImageUrl alt="" />
+                    <img src=@Model.Product.ImageUrl alt="" />
                 </div>
                 <div class="p-actions">
                     <div class="p-actions--wrapper">
                         <div class="p-actions--block price">
-                            <div class="p-price current">@Model.Price.ToString("C0")</div>
+                            <div class="p-price current">@Model.Product.Price.ToString("C0")</div>
                         </div>
                         <div class="p-actions--block actions">
-                            <button class="j-button main p-actions--action pay"
-                                    id="button-pay">
-                                <div class="text" id="button-pay-text">Купить</div>
+                            <button class="j-button main">
+                                <a class="text" href="/cart/add-product-to-cart/@Model.Product.Id">Купить</a>
                             </button>
 
                             <button class="j-button transparent p-actions--action favorite">
@@ -131,7 +130,7 @@
                                 Краткие характеристики
                             </div>
                             <div class="p-description--item-content">
-                                @foreach (var characteristic in Model.Characteristics)
+                                @foreach (var characteristic in Model.Product.Characteristics)
                                 {
                                     <div class="p-description--item-row">
                                         <div class="p-description--item-name">@characteristic.Key</div>
@@ -143,11 +142,11 @@
                     </div>
                     <div class="p-description--item offer">
                         <div class="p-description--item-title">
-                            Купить @Model.Name в @Model.City
+                            Купить @Model.Product.Name в @Model.Product.City
                         </div>
                         <div class="p-description--text">
-                            Продажа @Model.Name по выгодной цене. Стоимость товара в
-                            @Model.City можно уточнить у консультанта нашего
+                            Продажа @Model.Product.Name по выгодной цене. Стоимость товара в
+                            @Model.Product.City можно уточнить у консультанта нашего
                             интернет-магазина.
                         </div>
                     </div>
@@ -160,7 +159,7 @@
                         transition: all 300ms ease-in-out 0s;
                       ">
                                 <div class="p-description--text description">
-                                    @Model.Description
+                                    @Model.Product.Description
                                     <br />
                                 </div>
                             </div>
@@ -182,19 +181,17 @@
             <div class="main-widget-wrapper">
                 <div class="widget-title">Популярные товары</div>
                 <div class="widget-grid">
-                    @for (int i = 0; i < 6; i++)
+                    @foreach (var product in Model.PopularProducts)
                     {
                         <div class="widget-grid-item">
                             <div class="card">
                                 <div class="card-images">
-                                    <a class="card-images-wrapper" href="/catalog/@Model.SubCategory.Category.TranslitName/@Model.SubCategory.TranslitName/@Model.TranslitName/"
-                                       rel="noreferrer"
-                                       title="Системный блок черный">
-                                        <div class="card-images-desktop is-active">
+                                    <a class="card-images-wrapper" href="/catalog/@product.SubCategory.Category.TranslitName/@product.SubCategory.TranslitName/@product.TranslitName/"
+                                       title="@product.Name">
+                                        <div class="card-images-desktop">
                                             <div class="card-images-overlay"></div>
                                             <div class="card-images-img">
-                                                <img alt="Купить Системный блок черный б/у в Самаре. Цена 59000 рублей"
-                                                     src="~/img/product_photo_1.webp" />
+                                                <img src=@product.ImageUrl />
                                             </div>
                                         </div>
                                     </a>
@@ -202,19 +199,17 @@
                                 <div class="card-content">
                                     <div class="card-prices">
                                         <div class="card-price">
-                                            59 000 <span class="rub">рублей</span>
+                                            @product.Price.ToString("C0")
                                         </div>
                                     </div>
-                                    <a class="card-title" href="/catalog/@Model.SubCategory.Category.TranslitName/@Model.SubCategory.TranslitName/@Model.TranslitName/"
-                                       rel="noreferrer"
-                                       title="Купить Системный блок черный б/у в Самаре. Цена 59000 рублей">Системный блок черный</a>
+                                    <a class="card-title" href="/catalog/@product.SubCategory.Category.TranslitName/@product.SubCategory.TranslitName/@product.TranslitName/"
+                                       title="Купить @product.Name в @product.City. Цена @product.Price рублей">@product.Name</a>
                                 </div>
                                 <div class="card-bottom">
-                                    <div class="card-city">Самара</div>
+                                    <div class="card-city">@product.City</div>
                                     <div class="card-action-more"
-                                         title="Купить Системный блок черный б/у в Самаре. Цена 59000 рублей">
-                                        <a href="/catalog/@Model.SubCategory.Category.TranslitName/@Model.SubCategory.TranslitName/@Model.TranslitName/">Подробнее</a>
-                                        <i class="ui-icon"></i>
+                                         title="Купить @product.Name в @product.City. Цена @product.Price рублей">
+                                        <a href="/catalog/@product.SubCategory.Category.TranslitName/@product.SubCategory.TranslitName/@product.TranslitName/">Подробнее</a>
                                     </div>
                                 </div>
                             </div>

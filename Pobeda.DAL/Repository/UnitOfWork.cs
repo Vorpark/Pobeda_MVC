@@ -9,12 +9,14 @@ namespace Pobeda.DAL.Repository
         public IProductRepository Product { get; private set; }
         public ICategoryRepository Category { get; private set; }
         public IProductTagRepository ProductTag { get; private set; }
+        public ICartRepository Cart { get; private set; }
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             Product = new ProductRepository(_db);
             Category = new CategoryRepository(_db);
             ProductTag = new ProductTagRepository(_db);
+            Cart = new CartRepository(_db);
         }
 
         public void Save()

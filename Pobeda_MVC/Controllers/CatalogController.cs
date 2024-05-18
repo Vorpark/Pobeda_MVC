@@ -129,7 +129,13 @@ namespace Pobeda_MVC.Controllers
             //Отображение недействительного маршрута
             Product product = _unitOfWork.Product.Get(x => x.TranslitName == productName, includeProperties: "Characteristics,SubCategory,Tags");
             product.SubCategory.Category = _unitOfWork.Category.Get(x => x.Id == product.CategoryId);
-            return View(product);
+            IEnumerable<Product> productList = _unitOfWork.Product.GetPopularProducts();
+            ProductVM productVM = new ProductVM
+            {
+                Product = product,
+                PopularProducts = productList
+            };
+            return View(productVM);
         }
     }
 }

@@ -47,5 +47,6 @@ namespace Pobeda.Domain.Entity
 
         public ICollection<ProductCharacteristic> Characteristics { get; set; }
         public ICollection<ProductTag> Tags { get; set; }
+        public ICollection<Cart> Carts { get; set; }
     }
 }

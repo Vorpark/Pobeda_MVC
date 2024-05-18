@@ -11,6 +11,7 @@ namespace Pobeda.DAL.Data
         public DbSet<ProductCharacteristic> ProductCharacteristics { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<ProductTag> ProductTags { get; set; }
+        public DbSet<Cart> Carts { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
@@ -435,6 +436,10 @@ namespace Pobeda.DAL.Data
                             new { ProductsId = 3, TagsId = 4},
                             new { ProductsId = 4, TagsId = 2});
                     });
+
+            modelBuilder.Entity<Cart>().HasData(
+                new Cart { Id = 1, Products = { } }
+                );
         }
     }
 }
