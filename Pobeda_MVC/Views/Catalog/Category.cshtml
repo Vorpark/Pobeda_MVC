@@ -64,12 +64,12 @@
                     }
                 </h1>
                 <div class="filter-header--count">
-                    Всего @Model.Products.Count()
+                    Всего @Model?.Products?.Count()
                 </div>
             </div>
         </div>
 
-        @if (Model.FilterItems != null)
+        @if (Model?.FilterItems != null)
         {
             <div class="filter-quick">
                 <div class="swiper-container filter-quick--container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">
@@ -89,7 +89,7 @@
 
         <div class="filter-banner-top">
             <picture>
-                <source srcset="@Model.BannerImageUrl">
+                <source srcset="@Model?.BannerImageUrl">
                 <img src="" lazy-load="loaded">
             </picture>
         </div>
@@ -103,7 +103,7 @@
                             <i class="ui-icon-arrow-angletop"></i>
                         </div>
                         <div class="filter-component--wrapper">
-                            @foreach (var checkbox in Model.CheckBoxes)
+                            @foreach (var checkbox in Model?.CheckBoxes)
                             {
                                 <div class="j-checkbox" title="@checkbox.Description">
                                     <input class="j-checkbox-input"

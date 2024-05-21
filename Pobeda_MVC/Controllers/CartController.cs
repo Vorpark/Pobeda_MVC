@@ -17,7 +17,11 @@ namespace Pobeda_MVC.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            var cart = _unitOfWork.Cart.Get(x => x.Id == 1);
+            cart.Products ??= new List<Product>();
+            _unitOfWork.Cart.Update(cart);
+            _unitOfWork.Save();
+            return View(cart);
         }
 
         [HttpGet]

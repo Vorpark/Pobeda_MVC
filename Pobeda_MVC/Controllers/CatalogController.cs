@@ -16,25 +16,25 @@ namespace Pobeda_MVC.Controllers
             _unitOfWork = unitOfWork;
             _categoryCheckBox = new List<CategoryCheckBoxOption>()
             {
-                new CategoryCheckBoxOption()
+                new()
                 {
                     IsChecked = false,
                     Value = "Состояние новый",
                     Description = "Новый"
                 },
-                new CategoryCheckBoxOption()
+                new()
                 {
                     IsChecked = false,
                     Value = "Состояние отличное",
                     Description = "Отличное"
                 },
-                new CategoryCheckBoxOption()
+                new()
                 {
                     IsChecked = false,
                     Value = "Состояние хорошее",
                     Description = "Хорошее"
                 },
-                new CategoryCheckBoxOption()
+                new()
                 {
                     IsChecked = false,
                     Value = "Состояние удовлетворительное",
@@ -54,8 +54,8 @@ namespace Pobeda_MVC.Controllers
         public IActionResult Category(string categoryName, ICollection<string>? state)
         {
             var category = _unitOfWork.Category.Get(x => x.TranslitName == categoryName, includeProperties: "SubCategories,CategoryTags");
-            List<Product> products = new();
-            if(state?.Count() == 0 || state == null)
+            List<Product> products = [];
+            if(state?.Count == 0 || state == null)
             {
                 products = _unitOfWork.Product.GetAllFilter(x => x.CategoryId == category.Id).ToList();
             }
@@ -87,8 +87,8 @@ namespace Pobeda_MVC.Controllers
         {
             var category = _unitOfWork.Category.Get(x => x.TranslitName == categoryName, includeProperties: "SubCategories,CategoryTags");
             var subCategory = category.SubCategories.Where(x => x.TranslitName == subCategoryName).First();
-            List<Product> products = new();
-            if (state?.Count() == 0 || state == null)
+            List<Product> products = [];
+            if (state?.Count == 0 || state == null)
             {
                 products = _unitOfWork.Product.GetAllFilter(x => x.SubCategoryId == subCategory.Id).ToList();
             }
@@ -130,7 +130,7 @@ namespace Pobeda_MVC.Controllers
             Product product = _unitOfWork.Product.Get(x => x.TranslitName == productName, includeProperties: "Characteristics,SubCategory,Tags");
             product.SubCategory.Category = _unitOfWork.Category.Get(x => x.Id == product.CategoryId);
             IEnumerable<Product> productList = _unitOfWork.Product.GetPopularProducts();
-            ProductVM productVM = new ProductVM
+            ProductVM productVM = new()
             {
                 Product = product,
                 PopularProducts = productList

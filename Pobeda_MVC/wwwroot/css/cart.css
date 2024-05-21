@@ -347,6 +347,30 @@ main.main {
   border-color: #000;
   font-size: 14px;
 }
+.cart-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 30px;
+}
+.cart-empty--title {
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 37px;
+    margin-bottom: 10px;
+}
+.cart-empty--label {
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 20px;
+}
+.cart-empty--action {
+    margin-bottom: 60px;
+    border-radius: 3px;
+    font-size: 18px;
+    line-height: 21px;
+}
 @media (max-width: 1439px) {
   .cart-container {
     grid-column-gap: 16px;

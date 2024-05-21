@@ -1,4 +1,4 @@
-﻿
+﻿@model Cart
 
 <head>
     <title>Корзина | Победа</title>
@@ -22,8 +22,10 @@
             </div>
         </div>
         <div class="j-container app-content">
+            @if(@Model.Products.Count() > 0)
+            {
             <div class="page-cart">
-                <div class="cart-header">В корзине 2 товара</div>
+                <div class="cart-header">В корзине @Model?.Products.Count() товара</div>
                 <div class="cart-container">
                     <div class="cart-content">
                         <div class="cart-list">
@@ -33,54 +35,33 @@
                                 </button>
                             </div>
                             <div class="cart-list--content">
-                                <div class="cart-card">
-                                    <div class="cart-card--content">
-                                        <div class="cart-card--image">
-                                            <a href="#">
-                                                <img src="~/img/product_photo_1.webp" alt="" />
-                                            </a>
-                                        </div>
-                                        <div class="cart-card--info">
-                                            <a href="#">
-                                                <div class="cart-card--title">
-                                                    Системный блок
+                                    @foreach (var product in Model.Products)
+                                    {
+                                        <div class="cart-card">
+                                            <div class="cart-card--content">
+                                                <div class="cart-card--image">
+                                                    <a href="/catalog/@product.SubCategory.Category.TranslitName/@product.SubCategory.TranslitName/@product.TranslitName/">
+                                                        <img src=@product.ImageUrl alt="" />
+                                                    </a>
                                                 </div>
-                                            </a>
-                                            <div class="cart-card--label">Самара</div>
-                                            <div class="cart-card--amount">59 000 ₽</div>
-                                        </div>
-                                        <div class="cart-card--actions">
-                                            <div class="abyss"></div>
-                                            <button class="cart-card--remove">
-                                                Удалить<i class="ui-icon ui-icon-delete"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cart-card">
-                                    <div class="cart-card--content">
-                                        <div class="cart-card--image">
-                                            <a href="#">
-                                                <img src="~/img/product_photo_1.webp" alt="" />
-                                            </a>
-                                        </div>
-                                        <div class="cart-card--info">
-                                            <a href="#">
-                                                <div class="cart-card--title">
-                                                    Системный блок
+                                                <div class="cart-card--info">
+                                                    <a href="#">
+                                                        <div class="cart-card--title">
+                                                            @product.Name
+                                                        </div>
+                                                    </a>
+                                                    <div class="cart-card--label">@product.City</div>
+                                                    <div class="cart-card--amount">@product.Price.ToString("C0")</div>
                                                 </div>
-                                            </a>
-                                            <div class="cart-card--label">Самара</div>
-                                            <div class="cart-card--amount">59 000 ₽</div>
+                                                <div class="cart-card--actions">
+                                                    <div class="abyss"></div>
+                                                    <button class="cart-card--remove">
+                                                        Удалить<i class="ui-icon ui-icon-delete"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="cart-card--actions">
-                                            <div class="abyss"></div>
-                                            <button class="cart-card--remove">
-                                                Удалить<i class="ui-icon ui-icon-delete"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                                    }
                             </div>
                         </div>
                     </div>
@@ -93,8 +74,8 @@
                             </div>
                             <div class="cart-order--info">
                                 <div class="cart-order--info-item">
-                                    <div class="cart-order--cards-count">Товары (2)</div>
-                                    <div class="cart-order--cards-amount">118 000 ₽</div>
+                                        <div class="cart-order--cards-count">Товары (@Model.Products.Count())</div>
+                                        <div class="cart-order--cards-amount">@Model.Products.Select(x => x.Price).Sum().ToString("C0")</div>
                                 </div>
                                 <div class="cart-order--info-item">
                                     <div class="cart-order--payment-label">Оплата</div>
@@ -105,13 +86,14 @@
                             </div>
                             <div class="cart-order--amount">
                                 <div class="cart-order--amount-label">Итого:</div>
-                                <div class="cart-order--amount-value">118 000 ₽</div>
+                                <div class="cart-order--amount-value">@Model.Products.Select(x => x.Price).Sum().ToString("C0")</div>
                             </div>
                             <div class="cart-order--actions">
                                 <button class="j-button main"
                                         onclick="document.location='/Order'">
                                     Оформить заказ
-                                </button><button class="j-button transparent">
+                                </button>
+                                <button class="j-button transparent">
                                     Хочу в кредит
                                 </button>
                             </div>
@@ -123,6 +105,15 @@
                     </div>
                 </div>
             </div>
+            }
+            else
+            {
+            <div class="cart-empty">
+                <div class="cart-empty--title">Ваша корзина пуста</div>
+                <div class="cart-empty--label">Воспользуйтесь поиском, чтобы найти всё что нужно</div>
+                <a href="/"><button class="j-button main cart-empty--action">Перейти на главную</button></a>
+            </div>
+            }
         </div>
     </div>
 </div>

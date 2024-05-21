@@ -11,8 +11,8 @@ using Pobeda.DAL.Data;
 namespace Pobeda.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240516103811_NewSeedProducts")]
-    partial class NewSeedProducts
+    [Migration("20240521102539_RemoveAllAndInitialize")]
+    partial class RemoveAllAndInitialize
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,40 @@ namespace Pobeda.DAL.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("CartProduct", b =>
+                {
+                    b.Property<int>("CartsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CartsId", "ProductsId");
+
+                    b.HasIndex("ProductsId");
+
+                    b.ToTable("CartProduct");
+                });
+
+            modelBuilder.Entity("Pobeda.Domain.Entity.Cart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Carts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1
+                        });
+                });
 
             modelBuilder.Entity("Pobeda.Domain.Entity.Category", b =>
                 {
@@ -1746,7 +1780,32 @@ namespace Pobeda.DAL.Migrations
                         {
                             ProductsId = 2,
                             TagsId = 3
+                        },
+                        new
+                        {
+                            ProductsId = 3,
+                            TagsId = 4
+                        },
+                        new
+                        {
+                            ProductsId = 4,
+                            TagsId = 2
                         });
+                });
+
+            modelBuilder.Entity("CartProduct", b =>
+                {
+                    b.HasOne("Pobeda.Domain.Entity.Cart", null)
+                        .WithMany()
+                        .HasForeignKey("CartsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Pobeda.Domain.Entity.Product", null)
+                        .WithMany()
+                        .HasForeignKey("ProductsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Pobeda.Domain.Entity.CategoryTag", b =>
