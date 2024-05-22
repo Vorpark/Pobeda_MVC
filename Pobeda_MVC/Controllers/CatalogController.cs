@@ -123,6 +123,16 @@ namespace Pobeda_MVC.Controllers
         }
 
         [HttpGet]
+        [Route("find-product/{productName}")]
+        public IActionResult FindProduct(string productName)
+        {
+            //Отображение недействительного маршрута
+            Product product = _unitOfWork.Product.Get(x => x.TranslitName == productName, includeProperties: "SubCategory");
+            product.SubCategory.Category = _unitOfWork.Category.Get(x => x.Id == product.CategoryId);
+            return RedirectToAction("Product", "Catalog", new { categoryName = product.SubCategory.Category.TranslitName, subCategoryName = product.SubCategory.TranslitName, productName = product.TranslitName });
+        }
+
+        [HttpGet]
         [Route("{categoryName}/{subCategoryName}/{productName}")]
         public IActionResult Product(string categoryName, string subCategoryName, string productName)
         {

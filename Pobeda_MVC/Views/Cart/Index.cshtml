@@ -30,9 +30,9 @@
                     <div class="cart-content">
                         <div class="cart-list">
                             <div class="cart-list--title">
-                                <button class="cart-list--title-action">
+                                    <a class="cart-list--title-action" href="/cart/delete-all-products-from-cart">
                                     Удалить все товары из корзины<i class="ui-icon ui-icon-all-delete"></i>
-                                </button>
+                                </a>
                             </div>
                             <div class="cart-list--content">
                                     @foreach (var product in Model.Products)
@@ -40,12 +40,12 @@
                                         <div class="cart-card">
                                             <div class="cart-card--content">
                                                 <div class="cart-card--image">
-                                                    <a href="/catalog/@product.SubCategory.Category.TranslitName/@product.SubCategory.TranslitName/@product.TranslitName/">
+                                                    <a href="/catalog/find-product/@product.TranslitName">
                                                         <img src=@product.ImageUrl alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="cart-card--info">
-                                                    <a href="#">
+                                                    <a href="/catalog/find-product/@product.TranslitName">
                                                         <div class="cart-card--title">
                                                             @product.Name
                                                         </div>
@@ -55,9 +55,11 @@
                                                 </div>
                                                 <div class="cart-card--actions">
                                                     <div class="abyss"></div>
+                                                    <a href="/cart/delete-product-from-cart/@product.Id">
                                                     <button class="cart-card--remove">
                                                         Удалить<i class="ui-icon ui-icon-delete"></i>
                                                     </button>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>

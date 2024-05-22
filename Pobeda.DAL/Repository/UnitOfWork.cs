@@ -13,22 +13,21 @@ namespace Pobeda.DAL.Repository
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
-            ClearCart();
             Product = new ProductRepository(_db);
             Category = new CategoryRepository(_db);
             ProductTag = new ProductTagRepository(_db);
             Cart = new CartRepository(_db);
         }
 
-        private void ClearCart()
-        {
-            foreach (var product in _db.Products)
-            {
-                product.Carts = [];
-            }
-            _db.Products.UpdateRange(_db.Products);
-            _db.SaveChanges();
-        }
+        //private void ClearCart()
+        //{
+        //    foreach (var product in _db.Products)
+        //    {
+        //        product.Carts = [];
+        //    }
+        //    _db.Products.UpdateRange(_db.Products);
+        //    _db.SaveChanges();
+        //}
 
         public void Save()
         {

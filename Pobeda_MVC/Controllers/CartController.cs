@@ -17,7 +17,7 @@ namespace Pobeda_MVC.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var cart = _unitOfWork.Cart.Get(x => x.Id == 1);
+            var cart = _unitOfWork.Cart.Get(x => x.Id == 1, "Products");
             cart.Products ??= new List<Product>();
             _unitOfWork.Cart.Update(cart);
             _unitOfWork.Save();
@@ -33,6 +33,29 @@ namespace Pobeda_MVC.Controllers
             if (cart.Products == null)
                 cart.Products = new List<Product>();
             cart.Products.Add(product);
+            _unitOfWork.Cart.Update(cart);
+            _unitOfWork.Save();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        [Route("delete-product-from-cart/{productId}")]
+        public IActionResult DeleteProduct(int productId)
+        {
+            var cart = _unitOfWork.Cart.Get(x => x.Id == 1, "Products");
+            var product = cart.Products.FirstOrDefault(x => x.Id == productId);
+            cart.Products.Remove(product);
+            _unitOfWork.Cart.Update(cart);
+            _unitOfWork.Save();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        [Route("delete-all-products-from-cart")]
+        public IActionResult DeleteAllProducts()
+        {
+            var cart = _unitOfWork.Cart.Get(x => x.Id == 1, "Products");
+            cart.Products.Clear();
             _unitOfWork.Cart.Update(cart);
             _unitOfWork.Save();
             return RedirectToAction("Index");
