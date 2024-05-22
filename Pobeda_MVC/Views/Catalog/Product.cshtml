@@ -61,9 +61,18 @@
                             <div class="p-price current">@Model.Product.Price.ToString("C0")</div>
                         </div>
                         <div class="p-actions--block actions">
-                            <button class="j-button main">
-                                <a class="text" href="/cart/add-product-to-cart/@Model.Product.Id">Купить</a>
-                            </button>
+                            @if (@Model.Product.Carts.Count() == 0)
+                            {
+                                <button class="j-button main" onclick="document.location='/cart/add-product-to-cart/@Model.Product.Id'">
+                                    <a class="text">Купить</a>
+                                </button>
+                            }
+                            else
+                            {
+                                <button class="j-button main" onclick="document.location='/cart'">
+                                    <a class="text">В корзине</a>
+                                </button>
+                            }
 
                             <button class="j-button transparent p-actions--action favorite">
                                 <i class="ui-icon ui-icon-likeactive"></i>

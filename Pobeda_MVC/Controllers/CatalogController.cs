@@ -137,7 +137,7 @@ namespace Pobeda_MVC.Controllers
         public IActionResult Product(string categoryName, string subCategoryName, string productName)
         {
             //Отображение недействительного маршрута
-            Product product = _unitOfWork.Product.Get(x => x.TranslitName == productName, includeProperties: "Characteristics,SubCategory,Tags");
+            Product product = _unitOfWork.Product.Get(x => x.TranslitName == productName, includeProperties: "Characteristics,SubCategory,Tags,Carts");
             product.SubCategory.Category = _unitOfWork.Category.Get(x => x.Id == product.CategoryId);
             IEnumerable<Product> productList = _unitOfWork.Product.GetPopularProducts();
             ProductVM productVM = new()
